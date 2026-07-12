@@ -102,3 +102,9 @@ helpers, stubs, and fixtures — inside the feature's owned directory
 or bootstrapped code (src/lib/, src/components/ui/, src/App.test.*): the
 validate gate rejects any file outside the allow-list, however reasonable
 the conventional location seems.
+
+## House note: TypeScript 6 path aliases (this repo)
+
+When adding the `@/*` path alias to a tsconfig, use `paths` WITHOUT
+`baseUrl` — under TypeScript 6 `baseUrl` is a deprecation ERROR (TS5101)
+that fails `tsc -b`. `"paths": { "@/*": ["./src/*"] }` alone is correct.
