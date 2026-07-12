@@ -8,7 +8,7 @@
   _Requirements: 6.2, 6.3, 6.4, 6.5_
   _Boundary: vite.config.ts, tsconfig.app.json, src/index.css_
   _Depends: 1.1_
-- [ ] 1.3 (P) Add `components.json` as Shadcn's CLI config, specifying the `src/components/ui` component path, the `@/*` path alias, and the style preset.
+- [x] 1.3 (P) Add `components.json` as Shadcn's CLI config, specifying the `src/components/ui` component path, the `@/*` path alias, and the style preset.
   _Requirements: 6.1_
   _Boundary: components.json_
 
