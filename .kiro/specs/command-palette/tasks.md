@@ -42,7 +42,7 @@
   _Depends: 4.1_
 
 - [ ] 5. Mount Point Integration
-- [ ] 5.1 Edit `src/App.tsx` to render `<CommandPalette />` exactly once, unconditionally, importing it from `src/components/command-palette/command-palette.tsx`, leaving the rest of the existing blank-slate markup unchanged.
+- [x] 5.1 Edit `src/App.tsx` to render `<CommandPalette />` exactly once, unconditionally, importing it from `src/components/command-palette/command-palette.tsx`, leaving the rest of the existing blank-slate markup unchanged.
   _Requirements: 4.1, 4.2_
   _Boundary: src/App.tsx_
   _Depends: 4.1_
