@@ -13,7 +13,7 @@
   _Boundary: components.json_
 
 - [ ] 2. Shadcn UI Primitives Bootstrap
-- [ ] 2.1 Add `src/lib/utils.ts` exporting Shadcn's standard `cn()` class-merge helper built on `clsx` and `tailwind-merge`.
+- [x] 2.1 Add `src/lib/utils.ts` exporting Shadcn's standard `cn()` class-merge helper built on `clsx` and `tailwind-merge`.
   _Requirements: 5.3_
   _Boundary: src/lib/utils.ts_
   _Depends: 1.1_
