@@ -1,7 +1,14 @@
 {
   "id": "js",
   "mech": {
-    "build": ["npm", "run", "build"],
-    "test": ["node", "--test"]
+    "build": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "test": [
+      "npm",
+      "test"
+    ]
   }
 }
