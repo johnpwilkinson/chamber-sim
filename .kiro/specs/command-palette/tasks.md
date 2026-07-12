@@ -46,7 +46,7 @@
   _Requirements: 4.1, 4.2_
   _Boundary: src/App.tsx_
   _Depends: 4.1_
-- [ ]* 5.2 Add a test for `src/App.tsx` asserting `<CommandPalette />` renders exactly once outside any conditional markup, name this case [req:4.1], and that the pre-existing blank-slate markup is otherwise unchanged, name this case [req:4.2].
+- [x]* 5.2 Add a test for `src/App.tsx` asserting `<CommandPalette />` renders exactly once outside any conditional markup, name this case [req:4.1], and that the pre-existing blank-slate markup is otherwise unchanged, name this case [req:4.2].
   _Requirements: 4.1, 4.2_
   _Boundary: src/App.tsx_
   _Depends: 5.1_
