@@ -36,7 +36,7 @@
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
   _Boundary: src/components/command-palette/_
   _Depends: 2.3, 3.1_
-- [ ]* 4.2 Add tests for `src/components/command-palette/command-palette.tsx` covering: `Ctrl+K` toggles `open` on non-Mac, name this case [req:1.1]; `Cmd+K` (`metaKey`) toggles `open` on Mac, name this case [req:1.2]; exactly one `keydown` listener is registered per mount, name this case [req:1.3]; triggering `CommandDialog`'s close interaction (`onOpenChange`) updates `open` to closed, name this case [req:1.5]; and, with all command arrays empty, `CommandEmpty` renders "No results found." while all three `CommandGroup` headings ("Navigation", "Quick actions", "Search") are present, name this case with [req:2.1] [req:2.2] [req:2.3].
+- [x]* 4.2 Add tests for `src/components/command-palette/command-palette.tsx` covering: `Ctrl+K` toggles `open` on non-Mac, name this case [req:1.1]; `Cmd+K` (`metaKey`) toggles `open` on Mac, name this case [req:1.2]; exactly one `keydown` listener is registered per mount, name this case [req:1.3]; triggering `CommandDialog`'s close interaction (`onOpenChange`) updates `open` to closed, name this case [req:1.5]; and, with all command arrays empty, `CommandEmpty` renders "No results found." while all three `CommandGroup` headings ("Navigation", "Quick actions", "Search") are present, name this case with [req:2.1] [req:2.2] [req:2.3].
   _Requirements: 1.1, 1.2, 1.3, 1.5, 2.1, 2.2, 2.3_
   _Boundary: src/components/command-palette/_
   _Depends: 4.1_
