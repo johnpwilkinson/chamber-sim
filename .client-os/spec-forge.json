@@ -1,0 +1,387 @@
+{
+  "queue": [
+    "command-palette"
+  ],
+  "specs": {
+    "command-palette": {
+      "status": "done",
+      "requirements_written": true,
+      "tasks_written": true,
+      "approvals_set": {
+        "requirements": true,
+        "design": true,
+        "tasks": true
+      },
+      "residual_gaps": [],
+      "faithfulness": {
+        "ok": true,
+        "contradictions": [],
+        "invented_scope": [],
+        "unmapped_surfaces": []
+      },
+      "reqs_criteria_count": 34,
+      "tasks_parsed_count": 11,
+      "tasks_waves": [
+        {
+          "parallel": true,
+          "tasks": [
+            {
+              "id": "1.1",
+              "major": "1",
+              "sub": "1",
+              "desc": "Add `tailwindcss`, its Vite plugin (`@tailwindcss/vite`), and Shadcn's transitive dependencies (`class-variance-authority`, `clsx`, `tailwind-merge`, `@radix-ui/react-dialog`, an icon set) as new dependencies in `package.json` and install them, relying on the already-present `cmdk` dependency without re-adding it; verify the existing build and test suite still pass unchanged.",
+              "parallel": true,
+              "deferrableTest": false,
+              "requirements": [
+                "6.6"
+              ],
+              "boundary": [
+                "package.json"
+              ],
+              "dependsOn": [],
+              "blocked": false,
+              "checked": false
+            },
+            {
+              "id": "1.3",
+              "major": "1",
+              "sub": "3",
+              "desc": "Add `components.json` as Shadcn's CLI config, specifying the `src/components/ui` component path, the `@/*` path alias, and the style preset.",
+              "parallel": true,
+              "deferrableTest": false,
+              "requirements": [
+                "6.1"
+              ],
+              "boundary": [
+                "components.json"
+              ],
+              "dependsOn": [],
+              "blocked": false,
+              "checked": false
+            },
+            {
+              "id": "3.1",
+              "major": "3",
+              "sub": "1",
+              "desc": "Add `src/components/command-palette/commands.ts` declaring the `CommandCategory` union (`'navigation' | 'quick-action' | 'search'`) and the `CommandItem` interface (`id`, `label`, `category`, optional `keywords`, `onSelect`), and exporting `navigationCommands`, `quickActionCommands`, `searchCommands` as empty `CommandItem[]` arrays, with no runtime registration API and no populated entries.",
+              "parallel": true,
+              "deferrableTest": false,
+              "requirements": [
+                "3.1",
+                "3.2",
+                "3.3",
+                "3.4"
+              ],
+              "boundary": [
+                "src/components/command-palette/"
+              ],
+              "dependsOn": [],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "1.2",
+              "major": "1",
+              "sub": "2",
+              "desc": "Add `tailwind.config.ts`, register Tailwind's Vite plugin and the `@/*` path alias in `vite.config.ts`, add the matching `@/*` path alias in `tsconfig.app.json`, and add Tailwind's CSS entry point in `src/index.css` alongside the existing custom-property theme without replacing the existing tokens; verify the app still builds cleanly.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "6.2",
+                "6.3",
+                "6.4",
+                "6.5"
+              ],
+              "boundary": [
+                "vite.config.ts",
+                "tsconfig.app.json",
+                "src/index.css"
+              ],
+              "dependsOn": [
+                "1.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "2.1",
+              "major": "2",
+              "sub": "1",
+              "desc": "Add `src/lib/utils.ts` exporting Shadcn's standard `cn()` class-merge helper built on `clsx` and `tailwind-merge`.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "5.3"
+              ],
+              "boundary": [
+                "src/lib/utils.ts"
+              ],
+              "dependsOn": [
+                "1.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "2.2",
+              "major": "2",
+              "sub": "2",
+              "desc": "Add `src/components/ui/dialog.tsx` as Shadcn's generated Dialog primitive wrapping `@radix-ui/react-dialog`, using `cn()` from `src/lib/utils.ts`.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "5.2",
+                "5.4"
+              ],
+              "boundary": [
+                "src/components/ui/dialog.tsx"
+              ],
+              "dependsOn": [
+                "2.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "2.3",
+              "major": "2",
+              "sub": "3",
+              "desc": "Add `src/components/ui/command.tsx` as Shadcn's generated Command primitive wrapping `cmdk`, including the `CommandDialog` composition that renders `Dialog`/`DialogContent` from `src/components/ui/dialog.tsx`, using `cn()` from `src/lib/utils.ts`; add no other Shadcn primitive to `src/components/ui/`.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "5.1",
+                "5.4"
+              ],
+              "boundary": [
+                "src/components/ui/command.tsx"
+              ],
+              "dependsOn": [
+                "2.1",
+                "2.2"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "4.1",
+              "major": "4",
+              "sub": "1",
+              "desc": "Add `src/components/command-palette/command-palette.tsx`: local `open`/`setOpen` state; a single `useEffect`-registered `window` `keydown` listener matching `metaKey`+`k` (Mac) or `ctrlKey`+`k` (other platforms) that calls `preventDefault()` and toggles `open`; render Shadcn's `CommandDialog` (`open`, `onOpenChange={setOpen}`) wrapping `CommandInput`, `CommandList`, a `CommandEmpty` showing \"No results found.\", and three `CommandGroup`s headed \"Navigation\", \"Quick actions\", \"Search\" sourced from `navigationCommands`, `quickActionCommands`, `searchCommands`; add no custom selection or filter logic beyond what `cmdk`/Shadcn's `Command` primitive provides.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "1.5",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6"
+              ],
+              "boundary": [
+                "src/components/command-palette/"
+              ],
+              "dependsOn": [
+                "2.3",
+                "3.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "4.2",
+              "major": "4",
+              "sub": "2",
+              "desc": "Add tests for `src/components/command-palette/command-palette.tsx` covering: `Ctrl+K` toggles `open` on non-Mac, name this case [req:1.1]; `Cmd+K` (`metaKey`) toggles `open` on Mac, name this case [req:1.2]; exactly one `keydown` listener is registered per mount, name this case [req:1.3]; triggering `CommandDialog`'s close interaction (`onOpenChange`) updates `open` to closed, name this case [req:1.5]; and, with all command arrays empty, `CommandEmpty` renders \"No results found.\" while all three `CommandGroup` headings (\"Navigation\", \"Quick actions\", \"Search\") are present, name this case with [req:2.1] [req:2.2] [req:2.3].",
+              "parallel": false,
+              "deferrableTest": true,
+              "requirements": [
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.5",
+                "2.1",
+                "2.2",
+                "2.3"
+              ],
+              "boundary": [
+                "src/components/command-palette/"
+              ],
+              "dependsOn": [
+                "4.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "5.1",
+              "major": "5",
+              "sub": "1",
+              "desc": "Edit `src/App.tsx` to render `<CommandPalette />` exactly once, unconditionally, importing it from `src/components/command-palette/command-palette.tsx`, leaving the rest of the existing blank-slate markup unchanged.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "4.1",
+                "4.2"
+              ],
+              "boundary": [
+                "src/App.tsx"
+              ],
+              "dependsOn": [
+                "4.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "5.2",
+              "major": "5",
+              "sub": "2",
+              "desc": "Add a test for `src/App.tsx` asserting `<CommandPalette />` renders exactly once outside any conditional markup, name this case [req:4.1], and that the pre-existing blank-slate markup is otherwise unchanged, name this case [req:4.2].",
+              "parallel": false,
+              "deferrableTest": true,
+              "requirements": [
+                "4.1",
+                "4.2"
+              ],
+              "boundary": [
+                "src/App.tsx"
+              ],
+              "dependsOn": [
+                "5.1"
+              ],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        }
+      ],
+      "rules_added": [
+        {
+          "name": "sdd-command-palette-src-components-command-palette-is-exclusively-this-features",
+          "comment": "sdd-derived from kiro design commitment \"`src/components/command-palette/` is exclusively this feature's\": Nothing unrelated gets added there, and this feature adds nothing outside it except the integration touches listed above. Forbids sibling folders under src/components/ (e.g. ui/ or any future feature directory) from depending on command-palette internals, while permitting command-palette's own internal imports and the sanctioned src/App.tsx integration touch (which lives outside src/components/).",
+          "severity": "warn",
+          "from": {
+            "path": "^src/components/(?!command-palette/)"
+          },
+          "to": {
+            "path": "^src/components/command-palette/"
+          }
+        },
+        {
+          "name": "sdd-command-palette-src-components-ui-is-a-shared-shadcn-primitives-folder-not-command-palette-owned",
+          "comment": "sdd-derived from kiro design commitment \"`src/components/ui/` is a shared Shadcn primitives folder, not command-palette-owned\": This feature adds only the two primitives it needs (`command`, `dialog`) and does not pre-populate the rest of Shadcn's catalog. Future features add their own primitives here without needing command-palette's sign-off.",
+          "severity": "warn",
+          "from": {
+            "path": "^src/components/ui"
+          },
+          "to": {
+            "path": "^src/components/command-palette"
+          }
+        },
+        {
+          "name": "sdd-command-palette-tailwind-shadcn-config-is-a-one-time-project-bootstrap-not-a-long-term-command-palette-possession",
+          "comment": "sdd-derived from kiro design commitment \"Tailwind/Shadcn config is a one-time project bootstrap, not a long-term command-palette possession\": `components.json` and the Tailwind wiring exist because this is the first feature to need them; once merged, they belong to the project, not to this feature.",
+          "severity": "warn",
+          "from": {
+            "path": "^src/(components/ui|lib/utils)"
+          },
+          "to": {
+            "path": "^src/components/command-palette"
+          }
+        },
+        {
+          "name": "sdd-command-palette-no-real-command-entries",
+          "comment": "sdd-derived from kiro design commitment \"No real command entries\": `commands.ts` ships with empty category arrays. Populating navigation targets, quick actions, or search results is follow-on work, gated on the app having real pages/content.",
+          "severity": "warn",
+          "from": {
+            "path": "^src/components/command-palette/commands\\.ts$"
+          },
+          "to": {
+            "path": "^src/(?!components/command-palette/)"
+          }
+        },
+        {
+          "name": "sdd-command-palette-no-runtime-registration-api",
+          "comment": "sdd-derived from kiro design commitment \"No runtime registration API\": The command list is a static, hand-edited array. Nothing in this feature exposes a way for other parts of the app to register commands dynamically (brainstorm Q3).",
+          "severity": "warn",
+          "from": {
+            "path": "^src/(?!components/command-palette/)"
+          },
+          "to": {
+            "path": "^src/components/command-palette/commands\\.ts$"
+          }
+        },
+        {
+          "name": "sdd-command-palette-no-visible-trigger-ui",
+          "comment": "sdd-derived from kiro design commitment \"No visible trigger UI\": `Cmd/Ctrl+K` is the only entry point; no header button/icon is added (brainstorm Q5). App.tsx is the sole mount point for this feature (req 4.1/4.2) and may only import the sanctioned root `command-palette.tsx`; any other file wired in from that folder (e.g. a trigger/button component) would be the smuggled-in visible trigger this commitment forbids.",
+          "severity": "warn",
+          "from": {
+            "path": "^src/App\\.tsx$"
+          },
+          "to": {
+            "path": "^src/components/command-palette/(?!command-palette\\.tsx$).+"
+          }
+        },
+        {
+          "name": "sdd-command-palette-no-custom-selection-filter-logic",
+          "comment": "sdd-derived from kiro design commitment \"No custom selection/filter logic\": Keyboard and mouse selection, and empty-state rendering, come from `cmdk`/Shadcn's `Command` primitive as-is — this feature does not fork or reimplement that behavior. Feature files under src/components/command-palette/ (command-palette.tsx, commands.ts) must consume cmdk only via the shared wrapper at src/components/ui/command.tsx, never import cmdk directly, which is how a fork/reimplementation of its selection, filter, or empty-state behavior would enter this feature.",
+          "severity": "warn",
+          "from": {
+            "path": "^src/components/command-palette"
+          },
+          "to": {
+            "path": "^cmdk$"
+          }
+        }
+      ],
+      "halt_reason": null
+    }
+  },
+  "run_id": null
+}
