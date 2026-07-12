@@ -91,3 +91,14 @@ The parent controller parses the exact `- STATUS:` line. Do NOT rename the headi
 - MISSING: <only for NEEDS_CONTEXT -- describe exactly what additional context is needed and where it might be found>
 - EVIDENCE: <concrete code paths, functions, and tests that prove the behavior>
 ```
+
+## House rule: file-location boundary (this repo)
+
+The feature's requirements contain a CLOSED allow-list of files outside the
+feature's owned directory (integration touches + bootstrapped shared files).
+Place EVERY new file you create — including test files, test-support
+helpers, stubs, and fixtures — inside the feature's owned directory
+(e.g. src/components/<feature>/). NEVER create a test file next to shared
+or bootstrapped code (src/lib/, src/components/ui/, src/App.test.*): the
+validate gate rejects any file outside the allow-list, however reasonable
+the conventional location seems.
