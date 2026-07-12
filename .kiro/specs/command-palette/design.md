@@ -53,30 +53,15 @@ the blank-slate scaffold are out of scope.
 
 ## Boundary Commitments
 
-- **`src/components/command-palette/` is exclusively this feature's.**
-  Nothing unrelated gets added there, and this feature adds nothing
-  outside it except the integration touches listed above.
-- **`src/components/ui/` is a shared Shadcn primitives folder, not a
-  command-palette-owned one.** This feature adds only the two primitives
-  it needs (`command`, `dialog`) and does not pre-populate the rest of
-  Shadcn's catalog. Future features add their own primitives here without
-  needing command-palette's sign-off.
-- **Tailwind/Shadcn config is a one-time project bootstrap, not a
-  long-term command-palette possession.** `components.json` and the
-  Tailwind wiring exist because this is the first feature to need them;
-  once merged, they belong to the project, not to this feature.
-- **No real command entries.** `commands.ts` ships with empty category
-  arrays. Populating navigation targets, quick actions, or search results
-  is follow-on work, gated on the app having real pages/content.
-- **No runtime registration API.** The command list is a static, hand-
-  edited array. Nothing in this feature exposes a way for other parts of
-  the app to register commands dynamically (brainstorm Q3).
-- **No visible trigger UI.** `Cmd/Ctrl+K` is the only entry point; no
-  header button/icon is added (brainstorm Q5).
-- **No custom selection/filter logic.** Keyboard and mouse selection,
-  and empty-state rendering, come from `cmdk`/Shadcn's `Command`
-  primitive as-is — this feature does not fork or reimplement that
-  behavior.
+| Commitment | Detail |
+|---|---|
+| `src/components/command-palette/` is exclusively this feature's | Nothing unrelated gets added there, and this feature adds nothing outside it except the integration touches listed above. |
+| `src/components/ui/` is a shared Shadcn primitives folder, not command-palette-owned | This feature adds only the two primitives it needs (`command`, `dialog`) and does not pre-populate the rest of Shadcn's catalog. Future features add their own primitives here without needing command-palette's sign-off. |
+| Tailwind/Shadcn config is a one-time project bootstrap, not a long-term command-palette possession | `components.json` and the Tailwind wiring exist because this is the first feature to need them; once merged, they belong to the project, not to this feature. |
+| No real command entries | `commands.ts` ships with empty category arrays. Populating navigation targets, quick actions, or search results is follow-on work, gated on the app having real pages/content. |
+| No runtime registration API | The command list is a static, hand-edited array. Nothing in this feature exposes a way for other parts of the app to register commands dynamically (brainstorm Q3). |
+| No visible trigger UI | `Cmd/Ctrl+K` is the only entry point; no header button/icon is added (brainstorm Q5). |
+| No custom selection/filter logic | Keyboard and mouse selection, and empty-state rendering, come from `cmdk`/Shadcn's `Command` primitive as-is — this feature does not fork or reimplement that behavior. |
 
 ## Concrete Shape
 
