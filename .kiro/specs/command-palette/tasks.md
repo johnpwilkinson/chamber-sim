@@ -17,7 +17,7 @@
   _Requirements: 5.3_
   _Boundary: src/lib/utils.ts_
   _Depends: 1.1_
-- [ ] 2.2 Add `src/components/ui/dialog.tsx` as Shadcn's generated Dialog primitive wrapping `@radix-ui/react-dialog`, using `cn()` from `src/lib/utils.ts`.
+- [x] 2.2 Add `src/components/ui/dialog.tsx` as Shadcn's generated Dialog primitive wrapping `@radix-ui/react-dialog`, using `cn()` from `src/lib/utils.ts`.
   _Requirements: 5.2, 5.4_
   _Boundary: src/components/ui/dialog.tsx_
   _Depends: 2.1_
