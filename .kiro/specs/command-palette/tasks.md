@@ -32,7 +32,7 @@
   _Boundary: src/components/command-palette/_
 
 - [ ] 4. Command Palette Root Component
-- [ ] 4.1 Add `src/components/command-palette/command-palette.tsx`: local `open`/`setOpen` state; a single `useEffect`-registered `window` `keydown` listener matching `metaKey`+`k` (Mac) or `ctrlKey`+`k` (other platforms) that calls `preventDefault()` and toggles `open`; render Shadcn's `CommandDialog` (`open`, `onOpenChange={setOpen}`) wrapping `CommandInput`, `CommandList`, a `CommandEmpty` showing "No results found.", and three `CommandGroup`s headed "Navigation", "Quick actions", "Search" sourced from `navigationCommands`, `quickActionCommands`, `searchCommands`; add no custom selection or filter logic beyond what `cmdk`/Shadcn's `Command` primitive provides.
+- [x] 4.1 Add `src/components/command-palette/command-palette.tsx`: local `open`/`setOpen` state; a single `useEffect`-registered `window` `keydown` listener matching `metaKey`+`k` (Mac) or `ctrlKey`+`k` (other platforms) that calls `preventDefault()` and toggles `open`; render Shadcn's `CommandDialog` (`open`, `onOpenChange={setOpen}`) wrapping `CommandInput`, `CommandList`, a `CommandEmpty` showing "No results found.", and three `CommandGroup`s headed "Navigation", "Quick actions", "Search" sourced from `navigationCommands`, `quickActionCommands`, `searchCommands`; add no custom selection or filter logic beyond what `cmdk`/Shadcn's `Command` primitive provides.
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
   _Boundary: src/components/command-palette/_
   _Depends: 2.3, 3.1_
