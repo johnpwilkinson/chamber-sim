@@ -21,7 +21,7 @@
   _Requirements: 5.2, 5.4_
   _Boundary: src/components/ui/dialog.tsx_
   _Depends: 2.1_
-- [ ] 2.3 Add `src/components/ui/command.tsx` as Shadcn's generated Command primitive wrapping `cmdk`, including the `CommandDialog` composition that renders `Dialog`/`DialogContent` from `src/components/ui/dialog.tsx`, using `cn()` from `src/lib/utils.ts`; add no other Shadcn primitive to `src/components/ui/`.
+- [x] 2.3 Add `src/components/ui/command.tsx` as Shadcn's generated Command primitive wrapping `cmdk`, including the `CommandDialog` composition that renders `Dialog`/`DialogContent` from `src/components/ui/dialog.tsx`, using `cn()` from `src/lib/utils.ts`; add no other Shadcn primitive to `src/components/ui/`.
   _Requirements: 5.1, 5.4_
   _Boundary: src/components/ui/command.tsx_
   _Depends: 2.1, 2.2_
