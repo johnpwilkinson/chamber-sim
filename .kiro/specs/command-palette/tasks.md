@@ -4,7 +4,7 @@
 - [x] 1.1 (P) Add `tailwindcss`, its Vite plugin (`@tailwindcss/vite`), and Shadcn's transitive dependencies (`class-variance-authority`, `clsx`, `tailwind-merge`, `@radix-ui/react-dialog`, an icon set) as new dependencies in `package.json` and install them, relying on the already-present `cmdk` dependency without re-adding it; verify the existing build and test suite still pass unchanged.
   _Requirements: 6.6_
   _Boundary: package.json_
-- [ ] 1.2 Add `tailwind.config.ts`, register Tailwind's Vite plugin and the `@/*` path alias in `vite.config.ts`, add the matching `@/*` path alias in `tsconfig.app.json`, and add Tailwind's CSS entry point in `src/index.css` alongside the existing custom-property theme without replacing the existing tokens; verify the app still builds cleanly.
+- [x] 1.2 Add `tailwind.config.ts`, register Tailwind's Vite plugin and the `@/*` path alias in `vite.config.ts`, add the matching `@/*` path alias in `tsconfig.app.json`, and add Tailwind's CSS entry point in `src/index.css` alongside the existing custom-property theme without replacing the existing tokens; verify the app still builds cleanly.
   _Requirements: 6.2, 6.3, 6.4, 6.5_
   _Boundary: vite.config.ts, tsconfig.app.json, src/index.css_
   _Depends: 1.1_
