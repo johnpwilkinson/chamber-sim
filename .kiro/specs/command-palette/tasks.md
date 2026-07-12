@@ -27,7 +27,7 @@
   _Depends: 2.1, 2.2_
 
 - [ ] 3. Static Command Data
-- [ ] 3.1 (P) Add `src/components/command-palette/commands.ts` declaring the `CommandCategory` union (`'navigation' | 'quick-action' | 'search'`) and the `CommandItem` interface (`id`, `label`, `category`, optional `keywords`, `onSelect`), and exporting `navigationCommands`, `quickActionCommands`, `searchCommands` as empty `CommandItem[]` arrays, with no runtime registration API and no populated entries.
+- [x] 3.1 (P) Add `src/components/command-palette/commands.ts` declaring the `CommandCategory` union (`'navigation' | 'quick-action' | 'search'`) and the `CommandItem` interface (`id`, `label`, `category`, optional `keywords`, `onSelect`), and exporting `navigationCommands`, `quickActionCommands`, `searchCommands` as empty `CommandItem[]` arrays, with no runtime registration API and no populated entries.
   _Requirements: 3.1, 3.2, 3.3, 3.4_
   _Boundary: src/components/command-palette/_
 
