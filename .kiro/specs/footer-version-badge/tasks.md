@@ -4,7 +4,7 @@
 - [x] 1.1 (P) Add static `package.json` import and `define: { __APP_VERSION__: JSON.stringify(pkg.version) }` entry to `vite.config.ts`, leaving the existing `react()`/`tailwindcss()` plugin list and `resolve.alias` config unmodified
   _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
   _Boundary: vite.config.ts_
-- [ ] 1.2 (P) Create `src/vite-env.d.ts` with a `/// <reference types="vite/client" />` directive and an ambient `declare const __APP_VERSION__: string` declaration
+- [x] 1.2 (P) Create `src/vite-env.d.ts` with a `/// <reference types="vite/client" />` directive and an ambient `declare const __APP_VERSION__: string` declaration
   _Requirements: 3.1, 3.2_
   _Boundary: src/vite-env.d.ts_
 
