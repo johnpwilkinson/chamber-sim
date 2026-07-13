@@ -16,6 +16,7 @@
 
 - [ ] 3. Mount FooterVersionBadge in App
 - [ ] 3.1 Mount `<FooterVersionBadge />` in `src/App.tsx` immediately alongside the existing `<CommandPalette />` mount, with no other markup changes and no other file added or modified
+  _Blocked: vitest.config.ts is a separate Vite config from vite.config.ts and does not inherit vite.config.ts's  define: { __APP_VERSION__ }  entry. Mounting FooterVersionBadge (which reads the bare global __APP_VERSION__) in App.tsx is correct per spec, but any test that renders <App /> under Vitest now throws ReferenceError: __APP_VERSION__ is not defined, breaking the pre-existing command-palette app-integration tests. requirements.md/design.md never addressed the test runtime and requirement 11.3's closed file list does not include vitest.config.ts._
   _Requirements: 5.1, 5.2, 5.3, 11.2, 11.3_
   _Boundary: src/App.tsx_
   _Depends: 2.1_
