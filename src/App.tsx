@@ -4,12 +4,13 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import { CommandPalette } from './components/command-palette/command-palette'
+import { KeyboardShortcutsProvider } from './keyboard-shortcuts'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
+    <KeyboardShortcutsProvider>
       <CommandPalette />
       <section id="center">
         <div className="hero">
@@ -117,7 +118,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
-    </>
+    </KeyboardShortcutsProvider>
   )
 }
 
