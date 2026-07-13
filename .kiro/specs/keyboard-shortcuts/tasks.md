@@ -11,7 +11,7 @@
   _Requirements: 2.1, 2.3, 2.4, 2.5, 2.6, 10.1, 10.2, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 1.1_
-- [ ] 1.4 Implement `matchShortcut.ts` as a pure function matching a `KeyboardEvent` against `SHORTCUTS` (checking `event.metaKey` only, never `event.ctrlKey`), returning `undefined` on no match, and add unit tests covering a matching case per registry entry plus a non-matching case, named with [req:3.1] [req:3.2] [req:3.3] [req:3.4] [req:11.1]
+- [x] 1.4 Implement `matchShortcut.ts` as a pure function matching a `KeyboardEvent` against `SHORTCUTS` (checking `event.metaKey` only, never `event.ctrlKey`), returning `undefined` on no match, and add unit tests covering a matching case per registry entry plus a non-matching case, named with [req:3.1] [req:3.2] [req:3.3] [req:3.4] [req:11.1]
   _Requirements: 3.1, 3.2, 3.3, 3.4, 11.1, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 1.1, 1.3_
