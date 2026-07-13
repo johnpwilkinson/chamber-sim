@@ -1,0 +1,57 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.panel {
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  padding: 1.5rem;
+  min-width: 320px;
+  max-width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.title {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.keys {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  background: #f1f1f1;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #333;
+}
