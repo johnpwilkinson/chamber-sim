@@ -29,7 +29,7 @@
   _Depends: 1.1, 1.2, 1.3, 1.4, 2.1_
 
 - [ ] 4. Public hook and module API surface
-- [ ] 4.1 Implement `useShortcutAction.ts`, registering/unregistering a handler for `"search"` | `"save"` with `KeyboardShortcutsProvider`'s handler map on mount/unmount, invoking the handler when the corresponding shortcut fires outside a typing target, and no-oping without throwing when no handler is registered
+- [x] 4.1 Implement `useShortcutAction.ts`, registering/unregistering a handler for `"search"` | `"save"` with `KeyboardShortcutsProvider`'s handler map on mount/unmount, invoking the handler when the corresponding shortcut fires outside a typing target, and no-oping without throwing when no handler is registered
   _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 3.1_
