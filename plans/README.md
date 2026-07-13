@@ -6,8 +6,8 @@ LOW findings are never executed; they are recorded as residual.
 
 | # | plan | severity | status |
 |---|------|----------|--------|
-| 001 | bootstrapped-shadcn-primitives-reference | HIGH | pending |
-| 002 | alias-built-with-url-pathname-breaks-on | MED | pending |
-| 003 | no-test-for-the-istogglekey-guard-s-nega | MED | pending |
+| 001 | bootstrapped-shadcn-primitives-reference | HIGH | skipped(verdict/executor) |
+| 002 | alias-built-with-url-pathname-breaks-on | MED | deferred |
+| 003 | no-test-for-the-istogglekey-guard-s-nega | MED | deferred |
 | 903 | commanditem-name-collides-between-comman | LOW | residual |
 | 904 | deduplicate-the-three-identical-command | LOW | residual |
