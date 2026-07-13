@@ -39,7 +39,7 @@
   _Depends: 1.3, 3.1, 4.1_
 
 - [ ] 5. App shell integration
-- [ ] 5.1 Add exactly one `<KeyboardShortcutsProvider>` wrapping element and its accompanying import to `src/App.tsx`, with no other edits to that file
+- [x] 5.1 Add exactly one `<KeyboardShortcutsProvider>` wrapping element and its accompanying import to `src/App.tsx`, with no other edits to that file
   _Requirements: 8.1, 8.2_
   _Boundary: src/App.tsx_
   _Depends: 4.2_
