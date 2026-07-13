@@ -17,7 +17,7 @@
   _Depends: 1.1, 1.3_
 
 - [ ] 2. Help overlay UI
-- [ ] 2.1 Build `ShortcutHelpOverlay.tsx`, rendering the shortcut list (keys and descriptions) derived from `SHORTCUTS`, styled exclusively via `ShortcutHelpOverlay.module.css` with no edits to `src/App.css` or `src/index.css`
+- [x] 2.1 Build `ShortcutHelpOverlay.tsx`, rendering the shortcut list (keys and descriptions) derived from `SHORTCUTS`, styled exclusively via `ShortcutHelpOverlay.module.css` with no edits to `src/App.css` or `src/index.css`
   _Requirements: 5.2, 5.4, 5.5, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 1.1, 1.3_
