@@ -23,7 +23,7 @@
   _Depends: 1.1, 1.3_
 
 - [ ] 3. Provider: centralized listener and dispatch
-- [ ] 3.1 Build `KeyboardShortcutsProvider.tsx`: attach exactly one document-level `keydown` listener on mount and remove it on unmount, own the registered action-handler map, render `ShortcutHelpOverlay`, apply `isTypingTarget`/`matchShortcut` to suppress non-`allowWhileTyping` shortcuts while typing, open the overlay on `?`, and dispatch the cancel signal on `Escape` (closing the overlay if open, regardless of focus)
+- [x] 3.1 Build `KeyboardShortcutsProvider.tsx`: attach exactly one document-level `keydown` listener on mount and remove it on unmount, own the registered action-handler map, render `ShortcutHelpOverlay`, apply `isTypingTarget`/`matchShortcut` to suppress non-`allowWhileTyping` shortcuts while typing, open the overlay on `?`, and dispatch the cancel signal on `Escape` (closing the overlay if open, regardless of focus)
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 4.3, 4.4, 4.5, 5.1, 5.3, 6.1, 6.2, 6.3, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 1.1, 1.2, 1.3, 1.4, 2.1_
