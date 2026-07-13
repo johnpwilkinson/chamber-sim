@@ -33,7 +33,7 @@
   _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 9.1_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 3.1_
-- [ ] 4.2 Create `index.ts` exporting only `KeyboardShortcutsProvider`, `useShortcutAction`, and `SHORTCUTS`, with no other internal file (`matchShortcut.ts`, `isTypingTarget.ts`, `shortcuts.ts`, `types.ts`) exposed for outside import, and no search/save feature behavior implemented
+- [x] 4.2 Create `index.ts` exporting only `KeyboardShortcutsProvider`, `useShortcutAction`, and `SHORTCUTS`, with no other internal file (`matchShortcut.ts`, `isTypingTarget.ts`, `shortcuts.ts`, `types.ts`) exposed for outside import, and no search/save feature behavior implemented
   _Requirements: 7.6, 7.7, 7.8, 9.1, 9.2, 9.3_
   _Boundary: src/keyboard-shortcuts_
   _Depends: 1.3, 3.1, 4.1_
