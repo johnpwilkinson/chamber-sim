@@ -4,7 +4,7 @@
 - [x] 1.1 (P) Define `ShortcutDefinition` and `ShortcutActionId` types in `src/keyboard-shortcuts/types.ts`
   _Requirements: 2.2, 9.1_
   _Boundary: src/keyboard-shortcuts_
-- [ ] 1.2 (P) Implement `isTypingTarget.ts` as a pure function over `EventTarget | null` and add its unit tests covering input/textarea/contenteditable/select/non-typing targets, named with [req:4.1] [req:4.2] [req:4.6] [req:11.2]
+- [x] 1.2 (P) Implement `isTypingTarget.ts` as a pure function over `EventTarget | null` and add its unit tests covering input/textarea/contenteditable/select/non-typing targets, named with [req:4.1] [req:4.2] [req:4.6] [req:11.2]
   _Requirements: 4.1, 4.2, 4.6, 11.2, 9.1_
   _Boundary: src/keyboard-shortcuts_
 - [ ] 1.3 Define the static `SHORTCUTS: ShortcutDefinition[]` registry in `shortcuts.ts` (search ⌘K, save ⌘S, help `?`, cancel `Escape` with `allowWhileTyping: true`), with no persistence or rebind mechanism
