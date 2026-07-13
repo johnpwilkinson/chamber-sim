@@ -50,6 +50,27 @@ module.exports = {
       from: { path: "^src/components/command-palette" },
       to: { path: "^cmdk$" },
     },
+    {
+      name: "sdd-footer-version-badge-owns-component-dir",
+      severity: "warn",
+      comment: "Forbids sibling component folders from depending on footer-version-badge internals, since the directory is exclusively this feature's.",
+      from: { path: "^src/components/(?!footer-version-badge/)" },
+      to: { path: "^src/components/footer-version-badge/" },
+    },
+    {
+      name: "sdd-footer-version-badge-no-runtime-package-json-import",
+      severity: "warn",
+      comment: "Forbids the badge component from importing package.json at runtime, since the version must be injected build-time via Vite's define.",
+      from: { path: "^src/components/footer-version-badge/" },
+      to: { path: "^package\\.json$" },
+    },
+    {
+      name: "sdd-footer-version-badge-single-mount-point-app-tsx",
+      severity: "warn",
+      comment: "Forbids any file other than App.tsx from depending on the badge component, since it must be rendered from exactly one mount point.",
+      from: { path: "^src/(?!App\\.tsx$)" },
+      to: { path: "^src/components/footer-version-badge/footer-version-badge\\.tsx$" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },
