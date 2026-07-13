@@ -1,7 +1,7 @@
 # Implementation Plan: Keyboard Shortcuts
 
 - [ ] 1. Core types and pure shortcut-matching utilities
-- [ ] 1.1 (P) Define `ShortcutDefinition` and `ShortcutActionId` types in `src/keyboard-shortcuts/types.ts`
+- [x] 1.1 (P) Define `ShortcutDefinition` and `ShortcutActionId` types in `src/keyboard-shortcuts/types.ts`
   _Requirements: 2.2, 9.1_
   _Boundary: src/keyboard-shortcuts_
 - [ ] 1.2 (P) Implement `isTypingTarget.ts` as a pure function over `EventTarget | null` and add its unit tests covering input/textarea/contenteditable/select/non-typing targets, named with [req:4.1] [req:4.2] [req:4.6] [req:11.2]
