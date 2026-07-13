@@ -9,7 +9,7 @@
   _Boundary: src/vite-env.d.ts_
 
 - [ ] 2. FooterVersionBadge component
-- [ ] 2.1 Create `src/components/footer-version-badge/footer-version-badge.tsx` exporting `FooterVersionBadge`, a no-props no-state component rendering a `fixed right-3 bottom-3 print:hidden` wrapper containing a `rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]` span with plain text `v{__APP_VERSION__}`, no click handlers, no `<a>`/`<Link>`, no clipboard behavior, no `aria-hidden`, no `import.meta.env.DEV`/`PROD` gating, and no explicit `z-index`
+- [x] 2.1 Create `src/components/footer-version-badge/footer-version-badge.tsx` exporting `FooterVersionBadge`, a no-props no-state component rendering a `fixed right-3 bottom-3 print:hidden` wrapper containing a `rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]` span with plain text `v{__APP_VERSION__}`, no click handlers, no `<a>`/`<Link>`, no clipboard behavior, no `aria-hidden`, no `import.meta.env.DEV`/`PROD` gating, and no explicit `z-index`
   _Requirements: 1.1, 1.2, 1.3, 4.1, 4.2, 4.3, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 7.1, 8.1, 8.2, 8.3, 9.1, 9.2, 10.1, 10.2, 11.1_
   _Boundary: src/components/footer-version-badge/_
   _Depends: 1.1, 1.2_
