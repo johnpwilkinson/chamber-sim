@@ -22,18 +22,16 @@ ff3a57e feat(a-small-badge-in-the-app-header-showing): Add  declare const __BUIL
 | extract-repeated-build-time-formatting-i | residual |
 | no-test-covers-the-new-ambient-declarati | residual |
 | third-integration-test-duplicates-the-fi | residual |
-| test-tagged-req-8-3-never-checks-other-f | deferred |
-| no-test-for-req-7-3-always-rendered-no-e | deferred |
+| test-tagged-req-8-3-never-checks-other-f | fixed |
+| no-test-for-req-7-3-always-rendered-no-e | fixed |
 
 ### Deferred pick-list
 
-- test-tagged-req-8-3-never-checks-other-f
-- no-test-for-req-7-3-always-rendered-no-e
+(none — test-tagged-req-8-3-never-checks-other-f and no-test-for-req-7-3-always-rendered-no-e were fixed in the review-findings pass)
 
 ## Residual findings
 
-- [MED] Test tagged req:8.3 never checks other files (src/components/header-build-badge/app-integration.test.tsx:18)
-- [MED] No test for req:7.3 always-rendered/no env-gating (src/components/header-build-badge/header-build-badge.test.tsx:93)
+(none — see Plans table for resolved deferred findings)
 
 ## Gate receipts
 

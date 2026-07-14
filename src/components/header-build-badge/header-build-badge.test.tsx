@@ -1,8 +1,12 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
 import { HeaderBuildBadge } from './header-build-badge'
 
 const BUILD_TIME = 1752480000000
+const headerBuildBadgeSourcePath = path.resolve(process.cwd(), 'src/components/header-build-badge/header-build-badge.tsx')
+const headerBuildBadgeSource = readFileSync(headerBuildBadgeSourcePath, 'utf8')
 
 beforeEach(() => {
   vi.stubGlobal('__BUILD_TIME__', BUILD_TIME)
@@ -89,5 +93,9 @@ describe('HeaderBuildBadge', () => {
     render(<HeaderBuildBadge />)
     const badge = screen.getByText(/^built /)
     expect(badge.textContent?.startsWith('built ')).toBe(true)
+  })
+
+  it('renders unconditionally with no import.meta.env DEV/PROD gating [req:7.3]', () => {
+    expect(headerBuildBadgeSource).not.toMatch(/import\.meta\.env/)
   })
 })
