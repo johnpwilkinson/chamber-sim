@@ -1,0 +1,26 @@
+{
+  "feature": "footer-version-badge",
+  "findings": [
+    {
+      "severity": "med",
+      "file": "src/components/footer-version-badge/footer-version-badge.tsx",
+      "line": 2,
+      "issue": "Component uses `typeof __APP_VERSION__ !== 'undefined' ? __APP_VERSION__ : 'unknown'` instead of the approved design's direct `v{__APP_VERSION__}`. The fallback is unreachable in production (vite.config.ts always injects the define) and untested (every test in footer-version-badge.test.tsx stubs the global via vi.stubGlobal), so it's dead, untested code that deviates from the approved design.md concrete shape.",
+      "fix_hint": "Remove the typeof guard and use __APP_VERSION__ directly per design.md, as already planned in plans/004-drop-unreachable-typeof-fallback-guard-f.md."
+    },
+    {
+      "severity": "med",
+      "file": "src/App.tsx",
+      "line": 16,
+      "issue": "No test renders <App /> to verify FooterVersionBadge is actually mounted alongside CommandPalette (req 5.1-5.3). footer-version-badge.test.tsx only renders the component in isolation. The repo has a direct precedent (command-palette/app-integration.test.tsx) that isn't mirrored for this feature, so a regression removing/duplicating the mount would go undetected.",
+      "fix_hint": "Add an App-integration test mirroring command-palette/app-integration.test.tsx, as already planned in plans/005-no-test-exercises-footerversionbadge-mou.md — remember to vi.stubGlobal('__APP_VERSION__', ...) in that test if plan 004's guard removal lands first, to avoid a ReferenceError under Vitest."
+    },
+    {
+      "severity": "low",
+      "file": "plans/004-drop-unreachable-typeof-fallback-guard-f.md",
+      "line": 1,
+      "issue": "Plans 004 and 005 have an execution-order coupling that isn't called out: if 004 strips the typeof guard before 005 adds an App-level test, and that new test doesn't stub the global, rendering <App /> under Vitest throws ReferenceError (vitest.config.ts has no define for __APP_VERSION__).",
+      "fix_hint": "Note the dependency explicitly in one of the two plans, or execute 005 first (or with a global stub) before 004."
+    }
+  ]
+}
