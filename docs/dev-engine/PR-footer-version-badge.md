@@ -46,3 +46,5 @@ e0c9e33 feat(footer-version-badge): Add static  package.json  import and  define
 - gate: 116361
 
 > referee note (2026-07-14): receipted-validate acceptance run — re-review trigger touch.
+
+> referee note (2026-07-14): receipted-validate acceptance run — re-review trigger touch 2 (wave-5 live).
