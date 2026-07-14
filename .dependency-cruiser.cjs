@@ -64,6 +64,20 @@ module.exports = {
       from: { path: "^src/keyboard-shortcuts/" },
       to: { path: "^src/(App|index)\\.css$" },
     },
+    {
+      name: "sdd-a-small-badge-in-the-app-header-showing-owns-dir",
+      severity: "warn",
+      comment: "src/components/header-build-badge/ is exclusively this feature's, so no sibling component directory may import from it.",
+      from: { path: "^src/components/(?!header-build-badge/).+" },
+      to: { path: "^src/components/header-build-badge/" },
+    },
+    {
+      name: "sdd-a-small-badge-in-the-app-header-showing-single-mount",
+      severity: "warn",
+      comment: "HeaderBuildBadge has exactly one mount point, so only src/App.tsx may depend on header-build-badge.",
+      from: { path: "^(?!src/App\\.tsx$)(?!src/components/header-build-badge/).+" },
+      to: { path: "^src/components/header-build-badge/" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },

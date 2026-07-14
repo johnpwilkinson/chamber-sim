@@ -1,10 +1,9 @@
 {
   "queue": [
-    "command-palette",
-    "keyboard-shortcuts"
+    "a-small-badge-in-the-app-header-showing"
   ],
   "specs": {
-    "command-palette": {
+    "a-small-badge-in-the-app-header-showing": {
       "status": "done",
       "requirements_written": true,
       "tasks_written": true,
@@ -20,8 +19,8 @@
         "invented_scope": [],
         "unmapped_surfaces": []
       },
-      "reqs_criteria_count": 34,
-      "tasks_parsed_count": 11,
+      "reqs_criteria_count": 35,
+      "tasks_parsed_count": 4,
       "tasks_waves": [
         {
           "parallel": true,
@@ -30,82 +29,38 @@
               "id": "1.1",
               "major": "1",
               "sub": "1",
-              "desc": "Add `tailwindcss`, its Vite plugin (`@tailwindcss/vite`), and Shadcn's transitive dependencies (`class-variance-authority`, `clsx`, `tailwind-merge`, `@radix-ui/react-dialog`, an icon set) as new dependencies in `package.json` and install them, relying on the already-present `cmdk` dependency without re-adding it; verify the existing build and test suite still pass unchanged.",
+              "desc": "Add `__BUILD_TIME__: JSON.stringify(Date.now())` to the `define` block in `vite.config.ts`, alongside the existing `__APP_VERSION__: JSON.stringify(pkg.version)` entry, leaving that existing entry unmodified so `Date.now()` is injected as an unquoted numeric literal (a `number`, not a `string`), captured exactly once per config evaluation with no runtime clock reads or interval-based re-evaluation.",
               "parallel": true,
               "deferrableTest": false,
               "requirements": [
-                "6.6"
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "1.5"
               ],
               "boundary": [
-                "package.json"
+                "vite.config.ts"
               ],
               "dependsOn": [],
               "blocked": false,
               "checked": false
             },
-            {
-              "id": "1.3",
-              "major": "1",
-              "sub": "3",
-              "desc": "Add `components.json` as Shadcn's CLI config, specifying the `src/components/ui` component path, the `@/*` path alias, and the style preset.",
-              "parallel": true,
-              "deferrableTest": false,
-              "requirements": [
-                "6.1"
-              ],
-              "boundary": [
-                "components.json"
-              ],
-              "dependsOn": [],
-              "blocked": false,
-              "checked": false
-            },
-            {
-              "id": "3.1",
-              "major": "3",
-              "sub": "1",
-              "desc": "Add `src/components/command-palette/commands.ts` declaring the `CommandCategory` union (`'navigation' | 'quick-action' | 'search'`) and the `CommandItem` interface (`id`, `label`, `category`, optional `keywords`, `onSelect`), and exporting `navigationCommands`, `quickActionCommands`, `searchCommands` as empty `CommandItem[]` arrays, with no runtime registration API and no populated entries.",
-              "parallel": true,
-              "deferrableTest": false,
-              "requirements": [
-                "3.1",
-                "3.2",
-                "3.3",
-                "3.4"
-              ],
-              "boundary": [
-                "src/components/command-palette/"
-              ],
-              "dependsOn": [],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
             {
               "id": "1.2",
               "major": "1",
               "sub": "2",
-              "desc": "Add `tailwind.config.ts`, register Tailwind's Vite plugin and the `@/*` path alias in `vite.config.ts`, add the matching `@/*` path alias in `tsconfig.app.json`, and add Tailwind's CSS entry point in `src/index.css` alongside the existing custom-property theme without replacing the existing tokens; verify the app still builds cleanly.",
-              "parallel": false,
+              "desc": "Add `declare const __BUILD_TIME__: number` to `src/vite-env.d.ts` alongside the existing `declare const __APP_VERSION__: string` line, leaving that existing line unmodified.",
+              "parallel": true,
               "deferrableTest": false,
               "requirements": [
-                "6.2",
-                "6.3",
-                "6.4",
-                "6.5"
+                "2.1",
+                "2.2"
               ],
               "boundary": [
-                "vite.config.ts",
-                "tsconfig.app.json",
-                "src/index.css"
+                "src/vite-env.d.ts"
               ],
-              "dependsOn": [
-                "1.1"
-              ],
+              "dependsOn": [],
               "blocked": false,
               "checked": false
             }
@@ -118,378 +73,7 @@
               "id": "2.1",
               "major": "2",
               "sub": "1",
-              "desc": "Add `src/lib/utils.ts` exporting Shadcn's standard `cn()` class-merge helper built on `clsx` and `tailwind-merge`.",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "5.3"
-              ],
-              "boundary": [
-                "src/lib/utils.ts"
-              ],
-              "dependsOn": [
-                "1.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "2.2",
-              "major": "2",
-              "sub": "2",
-              "desc": "Add `src/components/ui/dialog.tsx` as Shadcn's generated Dialog primitive wrapping `@radix-ui/react-dialog`, using `cn()` from `src/lib/utils.ts`.",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "5.2",
-                "5.4"
-              ],
-              "boundary": [
-                "src/components/ui/dialog.tsx"
-              ],
-              "dependsOn": [
-                "2.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "2.3",
-              "major": "2",
-              "sub": "3",
-              "desc": "Add `src/components/ui/command.tsx` as Shadcn's generated Command primitive wrapping `cmdk`, including the `CommandDialog` composition that renders `Dialog`/`DialogContent` from `src/components/ui/dialog.tsx`, using `cn()` from `src/lib/utils.ts`; add no other Shadcn primitive to `src/components/ui/`.",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "5.1",
-                "5.4"
-              ],
-              "boundary": [
-                "src/components/ui/command.tsx"
-              ],
-              "dependsOn": [
-                "2.1",
-                "2.2"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "4.1",
-              "major": "4",
-              "sub": "1",
-              "desc": "Add `src/components/command-palette/command-palette.tsx`: local `open`/`setOpen` state; a single `useEffect`-registered `window` `keydown` listener matching `metaKey`+`k` (Mac) or `ctrlKey`+`k` (other platforms) that calls `preventDefault()` and toggles `open`; render Shadcn's `CommandDialog` (`open`, `onOpenChange={setOpen}`) wrapping `CommandInput`, `CommandList`, a `CommandEmpty` showing \"No results found.\", and three `CommandGroup`s headed \"Navigation\", \"Quick actions\", \"Search\" sourced from `navigationCommands`, `quickActionCommands`, `searchCommands`; add no custom selection or filter logic beyond what `cmdk`/Shadcn's `Command` primitive provides.",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "1.1",
-                "1.2",
-                "1.3",
-                "1.4",
-                "1.5",
-                "2.1",
-                "2.2",
-                "2.3",
-                "2.4",
-                "2.5",
-                "2.6"
-              ],
-              "boundary": [
-                "src/components/command-palette/"
-              ],
-              "dependsOn": [
-                "2.3",
-                "3.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "4.2",
-              "major": "4",
-              "sub": "2",
-              "desc": "Add tests for `src/components/command-palette/command-palette.tsx` covering: `Ctrl+K` toggles `open` on non-Mac, name this case [req:1.1]; `Cmd+K` (`metaKey`) toggles `open` on Mac, name this case [req:1.2]; exactly one `keydown` listener is registered per mount, name this case [req:1.3]; triggering `CommandDialog`'s close interaction (`onOpenChange`) updates `open` to closed, name this case [req:1.5]; and, with all command arrays empty, `CommandEmpty` renders \"No results found.\" while all three `CommandGroup` headings (\"Navigation\", \"Quick actions\", \"Search\") are present, name this case with [req:2.1] [req:2.2] [req:2.3].",
-              "parallel": false,
-              "deferrableTest": true,
-              "requirements": [
-                "1.1",
-                "1.2",
-                "1.3",
-                "1.5",
-                "2.1",
-                "2.2",
-                "2.3"
-              ],
-              "boundary": [
-                "src/components/command-palette/"
-              ],
-              "dependsOn": [
-                "4.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "5.1",
-              "major": "5",
-              "sub": "1",
-              "desc": "Edit `src/App.tsx` to render `<CommandPalette />` exactly once, unconditionally, importing it from `src/components/command-palette/command-palette.tsx`, leaving the rest of the existing blank-slate markup unchanged.",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "4.1",
-                "4.2"
-              ],
-              "boundary": [
-                "src/App.tsx"
-              ],
-              "dependsOn": [
-                "4.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "5.2",
-              "major": "5",
-              "sub": "2",
-              "desc": "Add a test for `src/App.tsx` asserting `<CommandPalette />` renders exactly once outside any conditional markup, name this case [req:4.1], and that the pre-existing blank-slate markup is otherwise unchanged, name this case [req:4.2].",
-              "parallel": false,
-              "deferrableTest": true,
-              "requirements": [
-                "4.1",
-                "4.2"
-              ],
-              "boundary": [
-                "src/App.tsx"
-              ],
-              "dependsOn": [
-                "5.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        }
-      ],
-      "rules_added": [
-        {
-          "name": "sdd-command-palette-src-components-command-palette-is-exclusively-this-features",
-          "comment": "sdd-derived from kiro design commitment \"`src/components/command-palette/` is exclusively this feature's\": Nothing unrelated gets added there, and this feature adds nothing outside it except the integration touches listed above. Forbids sibling folders under src/components/ (e.g. ui/ or any future feature directory) from depending on command-palette internals, while permitting command-palette's own internal imports and the sanctioned src/App.tsx integration touch (which lives outside src/components/).",
-          "severity": "warn",
-          "from": {
-            "path": "^src/components/(?!command-palette/)"
-          },
-          "to": {
-            "path": "^src/components/command-palette/"
-          }
-        },
-        {
-          "name": "sdd-command-palette-src-components-ui-is-a-shared-shadcn-primitives-folder-not-command-palette-owned",
-          "comment": "sdd-derived from kiro design commitment \"`src/components/ui/` is a shared Shadcn primitives folder, not command-palette-owned\": This feature adds only the two primitives it needs (`command`, `dialog`) and does not pre-populate the rest of Shadcn's catalog. Future features add their own primitives here without needing command-palette's sign-off.",
-          "severity": "warn",
-          "from": {
-            "path": "^src/components/ui"
-          },
-          "to": {
-            "path": "^src/components/command-palette"
-          }
-        },
-        {
-          "name": "sdd-command-palette-tailwind-shadcn-config-is-a-one-time-project-bootstrap-not-a-long-term-command-palette-possession",
-          "comment": "sdd-derived from kiro design commitment \"Tailwind/Shadcn config is a one-time project bootstrap, not a long-term command-palette possession\": `components.json` and the Tailwind wiring exist because this is the first feature to need them; once merged, they belong to the project, not to this feature.",
-          "severity": "warn",
-          "from": {
-            "path": "^src/(components/ui|lib/utils)"
-          },
-          "to": {
-            "path": "^src/components/command-palette"
-          }
-        },
-        {
-          "name": "sdd-command-palette-no-real-command-entries",
-          "comment": "sdd-derived from kiro design commitment \"No real command entries\": `commands.ts` ships with empty category arrays. Populating navigation targets, quick actions, or search results is follow-on work, gated on the app having real pages/content.",
-          "severity": "warn",
-          "from": {
-            "path": "^src/components/command-palette/commands\\.ts$"
-          },
-          "to": {
-            "path": "^src/(?!components/command-palette/)"
-          }
-        },
-        {
-          "name": "sdd-command-palette-no-runtime-registration-api",
-          "comment": "sdd-derived from kiro design commitment \"No runtime registration API\": The command list is a static, hand-edited array. Nothing in this feature exposes a way for other parts of the app to register commands dynamically (brainstorm Q3).",
-          "severity": "warn",
-          "from": {
-            "path": "^src/(?!components/command-palette/)"
-          },
-          "to": {
-            "path": "^src/components/command-palette/commands\\.ts$"
-          }
-        },
-        {
-          "name": "sdd-command-palette-no-visible-trigger-ui",
-          "comment": "sdd-derived from kiro design commitment \"No visible trigger UI\": `Cmd/Ctrl+K` is the only entry point; no header button/icon is added (brainstorm Q5). App.tsx is the sole mount point for this feature (req 4.1/4.2) and may only import the sanctioned root `command-palette.tsx`; any other file wired in from that folder (e.g. a trigger/button component) would be the smuggled-in visible trigger this commitment forbids.",
-          "severity": "warn",
-          "from": {
-            "path": "^src/App\\.tsx$"
-          },
-          "to": {
-            "path": "^src/components/command-palette/(?!command-palette\\.tsx$).+"
-          }
-        },
-        {
-          "name": "sdd-command-palette-no-custom-selection-filter-logic",
-          "comment": "sdd-derived from kiro design commitment \"No custom selection/filter logic\": Keyboard and mouse selection, and empty-state rendering, come from `cmdk`/Shadcn's `Command` primitive as-is \u2014 this feature does not fork or reimplement that behavior. Feature files under src/components/command-palette/ (command-palette.tsx, commands.ts) must consume cmdk only via the shared wrapper at src/components/ui/command.tsx, never import cmdk directly, which is how a fork/reimplementation of its selection, filter, or empty-state behavior would enter this feature.",
-          "severity": "warn",
-          "from": {
-            "path": "^src/components/command-palette"
-          },
-          "to": {
-            "path": "^cmdk$"
-          }
-        }
-      ],
-      "halt_reason": null
-    },
-    "keyboard-shortcuts": {
-      "status": "done",
-      "requirements_written": true,
-      "tasks_written": true,
-      "approvals_set": {
-        "requirements": true,
-        "design": true,
-        "tasks": true
-      },
-      "residual_gaps": [],
-      "faithfulness": {
-        "ok": true,
-        "contradictions": [],
-        "invented_scope": [],
-        "unmapped_surfaces": []
-      },
-      "reqs_criteria_count": 46,
-      "tasks_parsed_count": 9,
-      "tasks_waves": [
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "1.1",
-              "major": "1",
-              "sub": "1",
-              "desc": "Define `ShortcutDefinition` and `ShortcutActionId` types in `src/keyboard-shortcuts/types.ts`",
-              "parallel": true,
-              "deferrableTest": false,
-              "requirements": [
-                "2.2",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "1.2",
-              "major": "1",
-              "sub": "2",
-              "desc": "Implement `isTypingTarget.ts` as a pure function over `EventTarget | null` and add its unit tests covering input/textarea/contenteditable/select/non-typing targets, named with [req:4.1] [req:4.2] [req:4.6] [req:11.2]",
-              "parallel": true,
-              "deferrableTest": false,
-              "requirements": [
-                "4.1",
-                "4.2",
-                "4.6",
-                "11.2",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "1.3",
-              "major": "1",
-              "sub": "3",
-              "desc": "Define the static `SHORTCUTS: ShortcutDefinition[]` registry in `shortcuts.ts` (search \u2318K, save \u2318S, help `?`, cancel `Escape` with `allowWhileTyping: true`), with no persistence or rebind mechanism",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "2.1",
-                "2.3",
-                "2.4",
-                "2.5",
-                "2.6",
-                "10.1",
-                "10.2",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [
-                "1.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "1.4",
-              "major": "1",
-              "sub": "4",
-              "desc": "Implement `matchShortcut.ts` as a pure function matching a `KeyboardEvent` against `SHORTCUTS` (checking `event.metaKey` only, never `event.ctrlKey`), returning `undefined` on no match, and add unit tests covering a matching case per registry entry plus a non-matching case, named with [req:3.1] [req:3.2] [req:3.3] [req:3.4] [req:11.1]",
+              "desc": "Create `src/components/header-build-badge/header-build-badge.tsx`: a prop-less, stateless `HeaderBuildBadge` function component that reads the injected `__BUILD_TIME__` global, constructs a `Date` from it, formats it via `toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })` (no explicit locale, no explicit `timeZone`), and renders `<div className=\"fixed right-3 top-3 print:hidden\"><span className=\"rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]\">built {formatted}</span></div>` — purely presentational markup with no `onClick`, no `<a>`/`<Link>`, no clipboard API, no `aria-hidden`, and no `import.meta.env.DEV`/`PROD` gating. Add `src/components/header-build-badge/header-build-badge.test.tsx` (stubbing `__BUILD_TIME__` via `vi.stubGlobal`, mirroring the `FooterVersionBadge` test file's setup/teardown) naming tests: \"renders the build timestamp prefixed with 'built ' formatted via toLocaleString with no explicit locale or timeZone [req:3.1] [req:3.2] [req:3.3] [req:3.4] [req:3.5]\", \"positions the wrapper fixed to the top-right with a 12px offset [req:5.1] [req:5.2]\", \"hides the wrapper when printing [req:6.1]\", \"renders the text as a rounded-full pill with border and code-bg background [req:4.1]\", \"renders the text with text-xs sizing and the --text custom property color [req:4.1]\", \"styles using arbitrary-value references to existing custom properties, not new tokens [req:4.2]\", \"sets no explicit z-index on the badge or its wrapper [req:5.3]\", \"renders no interactive elements: no links, buttons, or click handlers [req:7.1]\", \"does not apply aria-hidden to the badge or its text [req:7.2]\", \"exposes the timestamp text as plain, reachable text discoverable via normal text queries [req:7.2]\".",
               "parallel": false,
               "deferrableTest": false,
               "requirements": [
@@ -497,43 +81,31 @@
                 "3.2",
                 "3.3",
                 "3.4",
-                "11.1",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [
-                "1.1",
-                "1.3"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "2.1",
-              "major": "2",
-              "sub": "1",
-              "desc": "Build `ShortcutHelpOverlay.tsx`, rendering the shortcut list (keys and descriptions) derived from `SHORTCUTS`, styled exclusively via `ShortcutHelpOverlay.module.css` with no edits to `src/App.css` or `src/index.css`",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
+                "3.5",
+                "3.6",
+                "3.7",
+                "4.1",
+                "4.2",
+                "4.3",
+                "4.4",
+                "4.5",
+                "5.1",
                 "5.2",
-                "5.4",
-                "5.5",
-                "9.1"
+                "5.3",
+                "6.1",
+                "7.1",
+                "7.2",
+                "7.3",
+                "7.4",
+                "9.1",
+                "9.3"
               ],
               "boundary": [
-                "src/keyboard-shortcuts"
+                "src/components/header-build-badge"
               ],
               "dependsOn": [
                 "1.1",
-                "1.3"
+                "1.2"
               ],
               "blocked": false,
               "checked": false
@@ -547,119 +119,22 @@
               "id": "3.1",
               "major": "3",
               "sub": "1",
-              "desc": "Build `KeyboardShortcutsProvider.tsx`: attach exactly one document-level `keydown` listener on mount and remove it on unmount, own the registered action-handler map, render `ShortcutHelpOverlay`, apply `isTypingTarget`/`matchShortcut` to suppress non-`allowWhileTyping` shortcuts while typing, open the overlay on `?`, and dispatch the cancel signal on `Escape` (closing the overlay if open, regardless of focus)",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "1.1",
-                "1.2",
-                "1.3",
-                "1.4",
-                "1.5",
-                "4.3",
-                "4.4",
-                "4.5",
-                "5.1",
-                "5.3",
-                "6.1",
-                "6.2",
-                "6.3",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [
-                "1.1",
-                "1.2",
-                "1.3",
-                "1.4",
-                "2.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "4.1",
-              "major": "4",
-              "sub": "1",
-              "desc": "Implement `useShortcutAction.ts`, registering/unregistering a handler for `\"search\"` | `\"save\"` with `KeyboardShortcutsProvider`'s handler map on mount/unmount, invoking the handler when the corresponding shortcut fires outside a typing target, and no-oping without throwing when no handler is registered",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "7.1",
-                "7.2",
-                "7.3",
-                "7.4",
-                "7.5",
-                "9.1"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [
-                "3.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "4.2",
-              "major": "4",
-              "sub": "2",
-              "desc": "Create `index.ts` exporting only `KeyboardShortcutsProvider`, `useShortcutAction`, and `SHORTCUTS`, with no other internal file (`matchShortcut.ts`, `isTypingTarget.ts`, `shortcuts.ts`, `types.ts`) exposed for outside import, and no search/save feature behavior implemented",
-              "parallel": false,
-              "deferrableTest": false,
-              "requirements": [
-                "7.6",
-                "7.7",
-                "7.8",
-                "9.1",
-                "9.2",
-                "9.3"
-              ],
-              "boundary": [
-                "src/keyboard-shortcuts"
-              ],
-              "dependsOn": [
-                "1.3",
-                "3.1",
-                "4.1"
-              ],
-              "blocked": false,
-              "checked": false
-            }
-          ]
-        },
-        {
-          "parallel": false,
-          "tasks": [
-            {
-              "id": "5.1",
-              "major": "5",
-              "sub": "1",
-              "desc": "Add exactly one `<KeyboardShortcutsProvider>` wrapping element and its accompanying import to `src/App.tsx`, with no other edits to that file",
+              "desc": "Update `src/App.tsx` to import `HeaderBuildBadge` from `./components/header-build-badge/header-build-badge` and mount `<HeaderBuildBadge />` once, directly alongside the existing `<FooterVersionBadge />` mount, with no other markup changes. Add `src/components/header-build-badge/app-integration.test.tsx` (stubbing both `__APP_VERSION__` and `__BUILD_TIME__`, mirroring the footer badge's `app-integration.test.tsx`) naming tests: \"mounts HeaderBuildBadge exactly once, alongside FooterVersionBadge [req:8.1] [req:8.3]\", \"leaves the existing blank-slate markup in App.tsx unchanged [req:8.2]\", \"renders the badge on the app's single page view [req:8.4]\".",
               "parallel": false,
               "deferrableTest": false,
               "requirements": [
                 "8.1",
-                "8.2"
+                "8.2",
+                "8.3",
+                "8.4",
+                "9.2"
               ],
               "boundary": [
-                "src/App.tsx"
+                "src/App.tsx",
+                "src/components/header-build-badge"
               ],
               "dependsOn": [
-                "4.2"
+                "2.1"
               ],
               "blocked": false,
               "checked": false
@@ -668,8 +143,8 @@
         }
       ],
       "rules_added": [
-        "sdd-keyboard-shortcuts-no-internal-imports",
-        "sdd-keyboard-shortcuts-no-shared-css"
+        "sdd-a-small-badge-in-the-app-header-showing-owns-dir",
+        "sdd-a-small-badge-in-the-app-header-showing-single-mount"
       ],
       "halt_reason": null
     }
