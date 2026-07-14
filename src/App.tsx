@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import { CommandPalette } from './components/command-palette/command-palette'
 import { FooterVersionBadge } from './components/footer-version-badge/footer-version-badge'
+import { HeaderBuildBadge } from './components/header-build-badge/header-build-badge'
 import { KeyboardShortcutsProvider } from './keyboard-shortcuts'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <KeyboardShortcutsProvider>
       <CommandPalette />
       <FooterVersionBadge />
+      <HeaderBuildBadge />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />

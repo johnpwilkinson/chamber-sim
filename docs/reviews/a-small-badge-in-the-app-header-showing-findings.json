@@ -1,0 +1,26 @@
+{
+  "feature": "a-small-badge-in-the-app-header-showing",
+  "findings": [
+    {
+      "severity": "med",
+      "file": "src/components/header-build-badge/app-integration.test.tsx",
+      "line": 18,
+      "issue": "Test is tagged [req:8.3] ('no file other than App.tsx mounts HeaderBuildBadge') but only renders <App/> and counts badge occurrences in that single render; it never inspects other files/modules, so the tag overclaims coverage. Already known and deferred per plans/006.",
+      "fix_hint": "Either drop the [req:8.3] tag, or add a source-scan test that greps src/**/*.tsx excluding header-build-badge/ and App.tsx for 'HeaderBuildBadge' and asserts no matches."
+    },
+    {
+      "severity": "med",
+      "file": "src/components/header-build-badge/header-build-badge.test.tsx",
+      "line": 93,
+      "issue": "No test exists for req:7.3 (badge must render unconditionally with no import.meta.env.DEV/PROD gating). A future change wrapping the render in an env check would violate 7.3 with no test failure. Already known and deferred per plans/007.",
+      "fix_hint": "Add a test stubbing import.meta.env.PROD/DEV both ways and asserting identical badge output, or a source-scan test asserting header-build-badge.tsx contains no 'import.meta.env' reference."
+    },
+    {
+      "severity": "low",
+      "file": "plans/README.md",
+      "line": 16,
+      "issue": "plans/README.md lists plans 006 and 007 as status 'pending' while docs/dev-engine/PR-a-small-badge-in-the-app-header-showing.md lists the same two as 'deferred' — the two tracking artifacts disagree within the same PR.",
+      "fix_hint": "Reconcile the status label between plans/README.md and the PR surface doc so the tracked state is unambiguous."
+    }
+  ]
+}
