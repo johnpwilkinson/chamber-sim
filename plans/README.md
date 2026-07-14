@@ -13,3 +13,8 @@ LOW findings are never executed; they are recorded as residual.
 | 904 | deduplicate-the-three-identical-command | LOW | residual |
 | 004 | drop-unreachable-typeof-fallback-guard-f | MED | pending |
 | 005 | no-test-exercises-footerversionbadge-mou | MED | pending |
+| 006 | test-tagged-req-8-3-never-checks-other-f | MED | pending |
+| 007 | no-test-for-req-7-3-always-rendered-no-e | MED | pending |
+| 902 | extract-repeated-build-time-formatting-i | LOW | residual |
+| 903 | no-test-covers-the-new-ambient-declarati | LOW | residual |
+| 904 | third-integration-test-duplicates-the-fi | LOW | residual |
