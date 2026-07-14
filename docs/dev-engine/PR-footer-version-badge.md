@@ -44,3 +44,5 @@ e0c9e33 feat(footer-version-badge): Add static  package.json  import and  define
 - validate: 83398
 - improve: 116361
 - gate: 116361
+
+> referee note (2026-07-14): receipted-validate acceptance run — re-review trigger touch.
