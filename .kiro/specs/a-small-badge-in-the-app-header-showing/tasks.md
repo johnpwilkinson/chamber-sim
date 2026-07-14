@@ -15,7 +15,7 @@
   _Depends: 1.1, 1.2_
 
 - [ ] 3. App root mount integration
-- [ ] 3.1 Update `src/App.tsx` to import `HeaderBuildBadge` from `./components/header-build-badge/header-build-badge` and mount `<HeaderBuildBadge />` once, directly alongside the existing `<FooterVersionBadge />` mount, with no other markup changes. Add `src/components/header-build-badge/app-integration.test.tsx` (stubbing both `__APP_VERSION__` and `__BUILD_TIME__`, mirroring the footer badge's `app-integration.test.tsx`) naming tests: "mounts HeaderBuildBadge exactly once, alongside FooterVersionBadge [req:8.1] [req:8.3]", "leaves the existing blank-slate markup in App.tsx unchanged [req:8.2]", "renders the badge on the app's single page view [req:8.4]".
+- [x] 3.1 Update `src/App.tsx` to import `HeaderBuildBadge` from `./components/header-build-badge/header-build-badge` and mount `<HeaderBuildBadge />` once, directly alongside the existing `<FooterVersionBadge />` mount, with no other markup changes. Add `src/components/header-build-badge/app-integration.test.tsx` (stubbing both `__APP_VERSION__` and `__BUILD_TIME__`, mirroring the footer badge's `app-integration.test.tsx`) naming tests: "mounts HeaderBuildBadge exactly once, alongside FooterVersionBadge [req:8.1] [req:8.3]", "leaves the existing blank-slate markup in App.tsx unchanged [req:8.2]", "renders the badge on the app's single page view [req:8.4]".
   _Requirements: 8.1, 8.2, 8.3, 8.4, 9.2_
   _Boundary: src/App.tsx, src/components/header-build-badge_
   _Depends: 2.1_
