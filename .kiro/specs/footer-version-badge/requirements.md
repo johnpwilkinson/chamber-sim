@@ -86,4 +86,4 @@
 
 - 11.1 THE SYSTEM SHALL implement this feature using only `react` (an existing dependency) and Tailwind utility classes, adding no new npm package.
 - 11.2 THE SYSTEM SHALL NOT modify `src/index.css`, `tailwind.config.ts`, `components.json`, `App.css`, or any file under `src/assets/*` as part of this feature.
-- 11.3 THE SYSTEM SHALL limit the total set of touched/created files to `src/components/footer-version-badge/footer-version-badge.tsx` (created, owned), `src/vite-env.d.ts` (created if absent, bootstrapped), `vite.config.ts` (touched per Requirement 2), and `src/App.tsx` (touched per Requirement 5), with no other file added or modified.
+- 11.3 THE SYSTEM SHALL limit the total set of touched/created files to `src/components/footer-version-badge/footer-version-badge.tsx` (created, owned), `src/components/footer-version-badge/footer-version-badge.test.tsx` (created, direct unit test for the owned component), `src/vite-env.d.ts` (created if absent, bootstrapped), `vite.config.ts` (touched per Requirement 2), and `src/App.tsx` (touched per Requirement 5), with no other file added or modified.

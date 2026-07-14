@@ -11,3 +11,5 @@ LOW findings are never executed; they are recorded as residual.
 | 003 | no-test-for-the-istogglekey-guard-s-nega | MED | deferred |
 | 903 | commanditem-name-collides-between-comman | LOW | residual |
 | 904 | deduplicate-the-three-identical-command | LOW | residual |
+| 004 | drop-unreachable-typeof-fallback-guard-f | MED | pending |
+| 005 | no-test-exercises-footerversionbadge-mou | MED | pending |
