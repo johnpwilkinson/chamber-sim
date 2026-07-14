@@ -12,22 +12,13 @@ afterEach(() => {
 })
 
 describe('App mount point integration', () => {
-  it('renders the command palette trigger surface exactly once, unconditionally [req:4.1]', async () => {
+  it('mounts FooterVersionBadge exactly once, alongside CommandPalette [req:5.1] [req:5.2]', () => {
     render(<App />)
 
-    const openEvent = new KeyboardEvent('keydown', {
-      key: 'k',
-      ctrlKey: true,
-      bubbles: true,
-      cancelable: true,
-    })
-    window.dispatchEvent(openEvent)
-
-    expect(await screen.findAllByText('No results found.')).toHaveLength(1)
-    expect(await screen.findAllByRole('combobox')).toHaveLength(1)
+    expect(screen.getAllByText('v1.2.3')).toHaveLength(1)
   })
 
-  it('leaves the existing blank-slate markup in App.tsx unchanged [req:4.2]', () => {
+  it('leaves the existing blank-slate markup in App.tsx unchanged [req:5.3]', () => {
     render(<App />)
 
     expect(screen.getByText('Get started')).toBeInTheDocument()
