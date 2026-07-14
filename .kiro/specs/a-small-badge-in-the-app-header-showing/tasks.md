@@ -4,7 +4,7 @@
 - [ ] 1.1 (P) Add `__BUILD_TIME__: JSON.stringify(Date.now())` to the `define` block in `vite.config.ts`, alongside the existing `__APP_VERSION__: JSON.stringify(pkg.version)` entry, leaving that existing entry unmodified so `Date.now()` is injected as an unquoted numeric literal (a `number`, not a `string`), captured exactly once per config evaluation with no runtime clock reads or interval-based re-evaluation.
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5_
   _Boundary: vite.config.ts_
-- [ ] 1.2 (P) Add `declare const __BUILD_TIME__: number` to `src/vite-env.d.ts` alongside the existing `declare const __APP_VERSION__: string` line, leaving that existing line unmodified.
+- [x] 1.2 (P) Add `declare const __BUILD_TIME__: number` to `src/vite-env.d.ts` alongside the existing `declare const __APP_VERSION__: string` line, leaving that existing line unmodified.
   _Requirements: 2.1, 2.2_
   _Boundary: src/vite-env.d.ts_
 
