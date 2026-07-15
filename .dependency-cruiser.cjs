@@ -127,6 +127,27 @@ module.exports = {
       from: { path: "^(?!src/App\\.tsx$)(?!src/components/footer-env-mode-badge/).+" },
       to: { path: "^src/components/footer-env-mode-badge/footer-env-mode-badge\\.tsx$" },
     },
+    {
+      name: "sdd-footer-locale-badge-dir-exclusive",
+      severity: "warn",
+      comment: "src/components/footer-locale-badge/ is exclusively this feature's, so sibling component folders must not import into it.",
+      from: { path: "^src/components/(?!footer-locale-badge/)" },
+      to: { path: "^src/components/footer-locale-badge/" },
+    },
+    {
+      name: "sdd-footer-locale-badge-single-mount-point",
+      severity: "warn",
+      comment: "Only src/App.tsx may mount FooterLocaleBadge; no other file may import it.",
+      from: { path: "^(?!src/App\\.tsx$)(?!src/components/footer-locale-badge/).+" },
+      to: { path: "^src/components/footer-locale-badge/footer-locale-badge\\.tsx$" },
+    },
+    {
+      name: "sdd-footer-locale-badge-no-declared-deps",
+      severity: "warn",
+      comment: "Declared deps are none beyond react, so the badge component must not depend on any other package or module.",
+      from: { path: "^src/components/footer-locale-badge/footer-locale-badge\\.tsx$" },
+      to: { path: "^(?!react$).+" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },

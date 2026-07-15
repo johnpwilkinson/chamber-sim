@@ -1,9 +1,9 @@
 {
   "queue": [
-    "env-mode-badge"
+    "footer-locale-badge"
   ],
   "specs": {
-    "env-mode-badge": {
+    "footer-locale-badge": {
       "status": "done",
       "requirements_written": true,
       "tasks_written": true,
@@ -19,46 +19,23 @@
         "invented_scope": [],
         "unmapped_surfaces": []
       },
-      "reqs_criteria_count": 44,
-      "tasks_parsed_count": 4,
+      "reqs_criteria_count": 42,
+      "tasks_parsed_count": 5,
       "tasks_waves": [
         {
           "parallel": true,
           "tasks": [
             {
-              "id": "1.1",
-              "major": "1",
+              "id": "2.1",
+              "major": "2",
               "sub": "1",
-              "desc": "Create `src/components/footer-env-mode-badge/footer-env-mode-badge.tsx`: a prop-less, state-less component that reads `import.meta.env.MODE`, applies `.toLowerCase()`, and renders it as plain text (no label prefix) inside a `<span title=\"vite mode\">` carrying the pill classes `rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]`, wrapped in a `<div className=\"fixed right-20 bottom-3 print:hidden\">` with no `z-index`, no `aria-hidden`, no interactive handlers/elements, and no environment gating on `import.meta.env.DEV`/`PROD`.",
+              "desc": "Change `src/components/footer-env-mode-badge/footer-env-mode-badge.tsx`'s outer wrapper offset from `right-20` to `right-36` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-env-mode-badge/footer-env-mode-badge.test.tsx` from `right-20` to `right-36`, naming that updated test [req:9.10]. Confirm all other existing assertions in the file are untouched and pass.",
               "parallel": true,
               "deferrableTest": false,
               "requirements": [
-                "1.1",
-                "1.2",
-                "1.3",
-                "1.4",
-                "1.5",
-                "2.1",
-                "2.2",
-                "2.3",
-                "2.4",
-                "3.1",
-                "3.2",
-                "4.1",
-                "4.2",
-                "5.1",
-                "5.2",
-                "5.3",
-                "5.4",
-                "6.1",
-                "6.2",
-                "6.3",
-                "7.1",
                 "7.2",
-                "7.3",
-                "7.4",
-                "9.1",
-                "9.2"
+                "7.6",
+                "9.10"
               ],
               "boundary": [
                 "src/components/footer-env-mode-badge"
@@ -68,16 +45,16 @@
               "checked": false
             },
             {
-              "id": "2.1",
+              "id": "2.2",
               "major": "2",
-              "sub": "1",
-              "desc": "In `src/components/footer-commit-badge/footer-commit-badge.tsx`, change the wrapper offset from `right-20` to `right-44` only (no other class, markup, tooltip, fallback, or SHA-display change), and update the corresponding assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from expecting `right-20` to expecting `right-44`, tagging the updated assertion [req:3.3] [req:10.8].",
+              "sub": "2",
+              "desc": "Change `src/components/footer-commit-badge/footer-commit-badge.tsx`'s outer wrapper offset from `right-44` to `right-56` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from `right-44` to `right-56`, naming that updated test [req:9.11]. Confirm all other existing assertions in the file are untouched and pass.",
               "parallel": true,
               "deferrableTest": false,
               "requirements": [
-                "3.3",
-                "3.4",
-                "10.8"
+                "7.3",
+                "7.7",
+                "9.11"
               ],
               "boundary": [
                 "src/components/footer-commit-badge"
@@ -92,33 +69,69 @@
           "parallel": false,
           "tasks": [
             {
-              "id": "1.2",
+              "id": "1.1",
               "major": "1",
-              "sub": "2",
-              "desc": "Create `src/components/footer-env-mode-badge/footer-env-mode-badge.test.tsx` verifying: lowercased mode value renders as plain text content [req:1.2] [req:1.3] [req:10.1]; wrapper carries `fixed`, `right-20`, `bottom-3`, `print:hidden` classes [req:3.1] [req:3.2] [req:10.2]; text-carrying `<span>` carries `title=\"vite mode\"` [req:4.2] [req:10.3]; pill styling classes (`rounded-full`, `border`, `bg-[var(--code-bg)]`, `text-xs`, `text-[var(--text)]`) are present [req:2.1] [req:10.4]; no explicit `z-index` class is present [req:2.4] [req:10.5]; no interactive elements (`<a>`, `<button>`, `onClick`) are present [req:5.1] [req:5.2] [req:10.6]; no `aria-hidden` attribute is present anywhere in the rendered output [req:4.1] [req:10.7].",
+              "sub": "1",
+              "desc": "Implement `FooterLocaleBadge` in `src/components/footer-locale-badge/footer-locale-badge.tsx`: a prop-less, state-less component that reads `navigator.language` once during render, falls back to the literal string `unknown` when it is falsy, lowercases the resolved value with a single `.toLowerCase()` call, and renders it with no label prefix inside a `<span title=\"browser locale\" className=\"rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]\">` wrapped in a `<div className=\"fixed right-20 bottom-3 print:hidden\">` (no `z-index`, no `aria-hidden`, no interactive elements/handlers, no `useEffect`/`languagechange` listener, no new npm package, no `vite-env.d.ts` or `vite.config.ts` changes).",
               "parallel": false,
               "deferrableTest": false,
               "requirements": [
+                "1.1",
                 "1.2",
                 "1.3",
+                "1.4",
+                "1.5",
                 "2.1",
-                "2.4",
+                "2.2",
+                "2.3",
                 "3.1",
                 "3.2",
+                "3.3",
+                "3.4",
                 "4.1",
                 "4.2",
+                "4.3",
                 "5.1",
                 "5.2",
-                "10.1",
-                "10.2",
-                "10.3",
-                "10.4",
-                "10.5",
-                "10.6",
-                "10.7"
+                "6.1",
+                "6.2",
+                "6.3",
+                "6.4",
+                "7.1"
               ],
               "boundary": [
-                "src/components/footer-env-mode-badge"
+                "src/components/footer-locale-badge"
+              ],
+              "dependsOn": [],
+              "blocked": false,
+              "checked": false
+            }
+          ]
+        },
+        {
+          "parallel": false,
+          "tasks": [
+            {
+              "id": "1.2",
+              "major": "1",
+              "sub": "2",
+              "desc": "Author `src/components/footer-locale-badge/footer-locale-badge.test.tsx` covering: rendered text equals the lowercased stubbed `navigator.language` value [req:9.1]; outer wrapper carries `fixed right-20 bottom-3` and `print:hidden` [req:9.2]; text-carrying element carries `title=\"browser locale\"` [req:9.3]; pill styling classes (`rounded-full`, `border`, `bg-[var(--code-bg)]`, `text-xs`, `text-[var(--text)]`) are present [req:9.4]; no explicit `z-index` is set [req:9.5]; no interactive elements or handlers (`<a>`, `<button>`, `onClick`) are present [req:9.6]; no `aria-hidden` attribute is present anywhere in the rendered output [req:9.7]; rendered `textContent` equals the resolved locale value exactly [req:9.8]; and exactly one dedicated test stubbing `navigator.language` as `undefined` asserting the badge renders the literal text `unknown` [req:9.9]. All tests pass against the component from 1.1.",
+              "parallel": false,
+              "deferrableTest": false,
+              "requirements": [
+                "9.1",
+                "9.2",
+                "9.3",
+                "9.4",
+                "9.5",
+                "9.6",
+                "9.7",
+                "9.8",
+                "9.9",
+                "6.1"
+              ],
+              "boundary": [
+                "src/components/footer-locale-badge"
               ],
               "dependsOn": [
                 "1.1"
@@ -135,15 +148,15 @@
               "id": "3.1",
               "major": "3",
               "sub": "1",
-              "desc": "In `src/App.tsx`, import `FooterEnvModeBadge` from `./components/footer-env-mode-badge/footer-env-mode-badge` and mount `<FooterEnvModeBadge />` exactly once, positioned between the existing `<FooterVersionBadge />` and `<FooterCommitBadge />` mounts, with no other markup change to the file, so the three footer badges (`right-3`, `right-20`, `right-44`) render together without horizontal overlap.",
+              "desc": "Edit `src/App.tsx` to import `FooterLocaleBadge` from `./components/footer-locale-badge/footer-locale-badge` and mount `<FooterLocaleBadge />` exactly once, immediately after `<FooterVersionBadge />` and before `<FooterEnvModeBadge />`, with no other markup change (leaving `FooterVersionBadge`'s markup and offset untouched). Verify the full build passes and the resulting closest-to-edge-first order is version → locale → env-mode → commit.",
               "parallel": false,
               "deferrableTest": false,
               "requirements": [
+                "7.4",
+                "7.5",
                 "8.1",
                 "8.2",
-                "8.3",
-                "8.4",
-                "3.5"
+                "8.3"
               ],
               "boundary": [
                 "src/App.tsx"
@@ -158,8 +171,9 @@
         }
       ],
       "rules_added": [
-        "sdd-env-mode-badge-dir-exclusive",
-        "sdd-env-mode-badge-single-mount-point"
+        "sdd-footer-locale-badge-dir-exclusive",
+        "sdd-footer-locale-badge-single-mount-point",
+        "sdd-footer-locale-badge-no-declared-deps"
       ],
       "halt_reason": null
     }
