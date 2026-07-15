@@ -4,8 +4,10 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import { CommandPalette } from './components/command-palette/command-palette'
+import { DrillSeedMarker } from './components/drill-seed-marker/drill-seed-marker'
 import { FooterVersionBadge } from './components/footer-version-badge/footer-version-badge'
 import { HeaderBuildBadge } from './components/header-build-badge/header-build-badge'
+import { ResumeFooterLink } from './components/resume-footer-link/resume-footer-link'
 import { KeyboardShortcutsProvider } from './keyboard-shortcuts'
 
 function App() {
@@ -14,8 +16,10 @@ function App() {
   return (
     <KeyboardShortcutsProvider>
       <CommandPalette />
+      <DrillSeedMarker />
       <FooterVersionBadge />
       <HeaderBuildBadge />
+      <ResumeFooterLink />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
