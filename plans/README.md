@@ -18,3 +18,6 @@ LOW findings are never executed; they are recorded as residual.
 | 902 | extract-repeated-build-time-formatting-i | LOW | residual |
 | 903 | no-test-covers-the-new-ambient-declarati | LOW | residual |
 | 904 | third-integration-test-duplicates-the-fi | LOW | residual |
+| 008 | remove-redundant-req-6-2-recap-test | MED | pending |
+| 009 | no-test-verifies-non-overlap-with-footer | MED | pending |
+| 902 | remove-no-op-req-6-1-sole-owner-test | LOW | residual |
