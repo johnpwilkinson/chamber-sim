@@ -22,7 +22,7 @@
   _Boundary: src/components/footer-commit-badge_
 
 - [ ] 3. Mount the locale badge in the app tree
-- [ ] 3.1 Edit `src/App.tsx` to import `FooterLocaleBadge` from `./components/footer-locale-badge/footer-locale-badge` and mount `<FooterLocaleBadge />` exactly once, immediately after `<FooterVersionBadge />` and before `<FooterEnvModeBadge />`, with no other markup change (leaving `FooterVersionBadge`'s markup and offset untouched). Verify the full build passes and the resulting closest-to-edge-first order is version → locale → env-mode → commit.
+- [x] 3.1 Edit `src/App.tsx` to import `FooterLocaleBadge` from `./components/footer-locale-badge/footer-locale-badge` and mount `<FooterLocaleBadge />` exactly once, immediately after `<FooterVersionBadge />` and before `<FooterEnvModeBadge />`, with no other markup change (leaving `FooterVersionBadge`'s markup and offset untouched). Verify the full build passes and the resulting closest-to-edge-first order is version → locale → env-mode → commit.
   _Requirements: 7.4, 7.5, 8.1, 8.2, 8.3_
   _Boundary: src/App.tsx_
   _Depends: 1.1_
