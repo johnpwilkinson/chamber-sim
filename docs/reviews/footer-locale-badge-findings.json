@@ -1,0 +1,19 @@
+{
+  "feature": "footer-locale-badge",
+  "findings": [
+    {
+      "severity": "med",
+      "file": "src/components/footer-locale-badge/footer-locale-badge.test.tsx",
+      "line": 89,
+      "issue": "Test tagged [req:6.1] only asserts `typeof FooterLocaleBadge === 'function'`, which is true for any successfully imported component and can never detect a real sole-ownership/boundary violation. This was already identified in plans/013-req-6-1-sole-owner-test-asserts-nothing.md but the plan was deferred rather than applied before merge.",
+      "fix_hint": "Remove the test (design.md's required-test list for this file has no ownership test) or replace it with something that actually exercises the boundary, e.g. asserting the module's only export is FooterLocaleBadge (Object.keys(module) check) — per the plan's own 'The fix' section."
+    },
+    {
+      "severity": "low",
+      "file": "plans/README.md",
+      "line": 30,
+      "issue": "plans/README.md lists plan 013 status as 'pending' while docs/dev-engine/PR-footer-locale-badge.md lists the same plan as 'deferred' (both in its Plans table and Deferred pick-list) and reports 'gate: green' despite the outstanding MED finding — the two process artifacts disagree on state and the gate status doesn't reflect the known defect.",
+      "fix_hint": "Reconcile the status string between plans/README.md and the PR surface doc, and don't report gate:green while a MED finding from this same PR's own review round remains unresolved."
+    }
+  ]
+}
