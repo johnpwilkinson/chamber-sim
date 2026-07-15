@@ -3,7 +3,7 @@ export function FooterCommitBadge() {
   const hasSha = sha !== 'whoops'
 
   return (
-    <div className="group relative fixed right-44 bottom-3 print:hidden">
+    <div className="group relative fixed right-56 bottom-3 print:hidden">
       <span className="rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]">
         {sha}
       </span>

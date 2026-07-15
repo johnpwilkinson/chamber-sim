@@ -17,7 +17,7 @@
   _Requirements: 7.2, 7.6, 9.10_
   _Boundary: src/components/footer-env-mode-badge_
 
-- [ ] 2.2 (P) Change `src/components/footer-commit-badge/footer-commit-badge.tsx`'s outer wrapper offset from `right-44` to `right-56` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from `right-44` to `right-56`, naming that updated test [req:9.11]. Confirm all other existing assertions in the file are untouched and pass.
+- [x] 2.2 (P) Change `src/components/footer-commit-badge/footer-commit-badge.tsx`'s outer wrapper offset from `right-44` to `right-56` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from `right-44` to `right-56`, naming that updated test [req:9.11]. Confirm all other existing assertions in the file are untouched and pass.
   _Requirements: 7.3, 7.7, 9.11_
   _Boundary: src/components/footer-commit-badge_
 
