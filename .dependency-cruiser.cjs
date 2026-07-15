@@ -113,6 +113,20 @@ module.exports = {
       from: { path: "^src/components/footer-commit-badge/" },
       to: { path: "^src/components/(footer-version-badge|header-build-badge)/" },
     },
+    {
+      name: "sdd-env-mode-badge-dir-exclusive",
+      severity: "warn",
+      comment: "src/components/footer-env-mode-badge/ is exclusively this feature's, so sibling component folders must not import into it.",
+      from: { path: "^src/components/(?!footer-env-mode-badge/)" },
+      to: { path: "^src/components/footer-env-mode-badge/" },
+    },
+    {
+      name: "sdd-env-mode-badge-single-mount-point",
+      severity: "warn",
+      comment: "Only src/App.tsx may mount FooterEnvModeBadge; no other file may import it.",
+      from: { path: "^(?!src/App\\.tsx$)(?!src/components/footer-env-mode-badge/).+" },
+      to: { path: "^src/components/footer-env-mode-badge/footer-env-mode-badge\\.tsx$" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },
