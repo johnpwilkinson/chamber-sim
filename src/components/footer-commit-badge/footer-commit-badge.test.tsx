@@ -138,11 +138,11 @@ describe('FooterCommitBadge', () => {
   describe('positioning and print behavior', () => {
     beforeEach(stubResolved)
 
-    it("positions the wrapper fixed right-44 bottom-3 [req:5.1] [req:3.3] [req:10.8]", () => {
+    it("positions the wrapper fixed right-56 bottom-3 [req:5.1] [req:3.3] [req:10.8] [req:9.11]", () => {
       render(<FooterCommitBadge />)
       const wrapper = screen.getByText(SHORT_SHA).parentElement
       expect(wrapper?.className).toContain('fixed')
-      expect(wrapper?.className).toContain('right-44')
+      expect(wrapper?.className).toContain('right-56')
       expect(wrapper?.className).toContain('bottom-3')
     })
 
