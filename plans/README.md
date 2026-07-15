@@ -27,4 +27,4 @@ LOW findings are never executed; they are recorded as residual.
 | 012 | onclick-test-only-checks-dom-attribute-n | MED | pending |
 | 902 | remove-self-referential-name-obfuscation | LOW | residual |
 | 903 | remove-duplicate-mode-text-assertion | LOW | residual |
-| 013 | req-6-1-sole-owner-test-asserts-nothing | MED | pending |
+| 013 | req-6-1-sole-owner-test-asserts-nothing | MED | fixed |

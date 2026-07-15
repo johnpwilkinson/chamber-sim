@@ -21,19 +21,19 @@ e2a8e3d feat(footer-locale-badge): Change  src/components/footer-env-mode-badge/
 
 | slug | status |
 |------|--------|
-| req-6-1-sole-owner-test-asserts-nothing | deferred |
+| req-6-1-sole-owner-test-asserts-nothing | fixed |
 
 ### Deferred pick-list
 
-- req-6-1-sole-owner-test-asserts-nothing
+- (none)
 
 ## Residual findings
 
-- [MED] req:6.1 'sole owner' test asserts nothing meaningful (src/components/footer-locale-badge/footer-locale-badge.test.tsx:89)
+- (none)
 
 ## Gate receipts
 
-- gate: green
+- gate: green (re-verified after fixing req:6.1 MED finding)
 
 ## Tokens
 

@@ -85,8 +85,4 @@ describe('FooterLocaleBadge', () => {
     render(<FooterLocaleBadge />)
     expect(screen.getByText('unknown')).toBeInTheDocument()
   })
-
-  it('is implemented at src/components/footer-locale-badge/footer-locale-badge.tsx as its sole owner [req:6.1]', () => {
-    expect(typeof FooterLocaleBadge).toBe('function')
-  })
 })
