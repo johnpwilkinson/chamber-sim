@@ -17,10 +17,11 @@ The sha is captured once at build time via two new Vite `define` globals,
 `__COMMIT_SHA__` (short) and `__COMMIT_SHA_FULL__` (full), mirroring how
 `__APP_VERSION__` and `__BUILD_TIME__` are already injected in
 `vite.config.ts`. Both are resolved by shelling out to `git rev-parse` at
-config-eval time (`--short HEAD` and `HEAD`); if either invocation throws
-(no `.git` directory, `git` not installed, building from a tarball), both
-globals fall back to the literal string `"whoops"` and the component skips
-the tooltip entirely.
+config-eval time (`--short HEAD` and `HEAD`); each invocation is
+independent — if one throws (no `.git` directory, `git` not installed,
+building from a tarball), THAT global falls back to the literal string
+`"whoops"` while the other keeps its resolved value; the component skips
+the tooltip whenever the short sha is `"whoops"`.
 
 The tooltip is implemented as a plain CSS hover reveal (Tailwind
 `group`/`group-hover:opacity-100` on a non-focusable wrapper), not the
@@ -71,7 +72,7 @@ feature, not modified.
 | `src/components/footer-commit-badge/` is exclusively this feature's | Nothing unrelated gets added there, and this feature adds nothing outside it except the integration touches listed above. |
 | Declared deps | none — uses only `react` (already a dependency), Node's built-in `node:child_process` (`execFileSync`, build-time only, never bundled into client code), and Tailwind utility classes; no new npm package is added. |
 | Build-time sha only | Both globals are resolved once via `git rev-parse` when `vite.config.ts` is evaluated. No runtime fetch (no `version.json`, no API call), no CI-only env var dependency, no re-resolution on the client. |
-| Fallback is `"whoops"`, no tooltip in that state | If `git rev-parse` throws for either the short or full sha, both globals resolve to the literal string `"whoops"` and the component renders no tooltip markup at all when `__COMMIT_SHA__ === "whoops"`. |
+| Fallback is `"whoops"`, no tooltip in that state | Each global falls back independently: if `git rev-parse` throws for the short (or full) sha, that global alone resolves to the literal string `"whoops"`; the component renders no tooltip markup at all when `__COMMIT_SHA__ === "whoops"`. |
 | No native `title` attribute | The tooltip is custom-styled markup (a `group-hover:`-revealed `<span>`), never the browser's native `title` tooltip. |
 | Hover-only, no keyboard/touch access | The tooltip trigger is a plain `<span>` with no `tabIndex`, `onFocus`, or interactive role, so it cannot receive keyboard focus; the tooltip is revealed purely via CSS `:hover` (`group-hover:opacity-100`). |
 | Static, non-interactive | No `onClick`, no `<a>`/`<Link>`, no clipboard API, no outbound link. Purely presentational markup, matching `HeaderBuildBadge` and `FooterVersionBadge`. |
