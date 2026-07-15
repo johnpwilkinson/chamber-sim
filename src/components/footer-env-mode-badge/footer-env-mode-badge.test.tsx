@@ -22,11 +22,11 @@ describe('FooterEnvModeBadge', () => {
     expect(badge.textContent).toBe(expectedMode)
   })
 
-  it('positions the wrapper fixed right-20 bottom-3 and hides it when printing [req:3.1] [req:3.2] [req:10.2]', () => {
+  it('positions the wrapper fixed right-36 bottom-3 and hides it when printing [req:3.1] [req:3.2] [req:9.10] [req:10.2]', () => {
     render(<FooterEnvModeBadge />)
     const wrapper = screen.getByText(expectedMode).parentElement
     expect(wrapper?.className).toContain('fixed')
-    expect(wrapper?.className).toContain('right-20')
+    expect(wrapper?.className).toContain('right-36')
     expect(wrapper?.className).toContain('bottom-3')
     expect(wrapper?.className).toContain('print:hidden')
   })

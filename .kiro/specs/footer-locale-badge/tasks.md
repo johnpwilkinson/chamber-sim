@@ -13,7 +13,7 @@
   _Depends: 1.1_
 
 - [ ] 2. Reposition existing footer badges to make room
-- [ ] 2.1 (P) Change `src/components/footer-env-mode-badge/footer-env-mode-badge.tsx`'s outer wrapper offset from `right-20` to `right-36` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-env-mode-badge/footer-env-mode-badge.test.tsx` from `right-20` to `right-36`, naming that updated test [req:9.10]. Confirm all other existing assertions in the file are untouched and pass.
+- [x] 2.1 (P) Change `src/components/footer-env-mode-badge/footer-env-mode-badge.tsx`'s outer wrapper offset from `right-20` to `right-36` (no other styling, text, or behavior change), and update the matching assertion in `src/components/footer-env-mode-badge/footer-env-mode-badge.test.tsx` from `right-20` to `right-36`, naming that updated test [req:9.10]. Confirm all other existing assertions in the file are untouched and pass.
   _Requirements: 7.2, 7.6, 9.10_
   _Boundary: src/components/footer-env-mode-badge_
 
