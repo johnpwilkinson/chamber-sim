@@ -17,7 +17,7 @@
   _Depends: 2.1_
 
 - [ ] 4. Mount FooterCommitBadge in the app shell
-- [ ] 4.1 Add the `<FooterCommitBadge />` mount to `src/App.tsx` immediately next to the existing `<FooterVersionBadge />` mount, with no other markup changes. Add `src/components/footer-commit-badge/app-integration.test.tsx` with tests tagged [req:7.1] verifying `FooterCommitBadge` mounts exactly once alongside `FooterVersionBadge`/`HeaderBuildBadge`, [req:7.2] [req:8.1] verifying (via a source scan of `src/**/*.tsx`) that no file other than `App.tsx` and files under `src/components/footer-commit-badge/` references `FooterCommitBadge`, and [req:7.3] [req:8.4] verifying the pre-existing blank-slate markup in `App.tsx` and the `FooterVersionBadge`/`HeaderBuildBadge` source remain unchanged.
+- [x] 4.1 Add the `<FooterCommitBadge />` mount to `src/App.tsx` immediately next to the existing `<FooterVersionBadge />` mount, with no other markup changes. Add `src/components/footer-commit-badge/app-integration.test.tsx` with tests tagged [req:7.1] verifying `FooterCommitBadge` mounts exactly once alongside `FooterVersionBadge`/`HeaderBuildBadge`, [req:7.2] [req:8.1] verifying (via a source scan of `src/**/*.tsx`) that no file other than `App.tsx` and files under `src/components/footer-commit-badge/` references `FooterCommitBadge`, and [req:7.3] [req:8.4] verifying the pre-existing blank-slate markup in `App.tsx` and the `FooterVersionBadge`/`HeaderBuildBadge` source remain unchanged.
   _Requirements: 7.1, 7.2, 7.3, 8.1, 8.4_
   _Boundary: src/App.tsx, src/components/footer-commit-badge/_
   _Depends: 3.1_

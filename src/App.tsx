@@ -5,6 +5,7 @@ import heroImg from './assets/hero.png'
 import './App.css'
 import { CommandPalette } from './components/command-palette/command-palette'
 import { DrillSeedMarker } from './components/drill-seed-marker/drill-seed-marker'
+import { FooterCommitBadge } from './components/footer-commit-badge/footer-commit-badge'
 import { FooterVersionBadge } from './components/footer-version-badge/footer-version-badge'
 import { HeaderBuildBadge } from './components/header-build-badge/header-build-badge'
 import { ResumeFooterLink } from './components/resume-footer-link/resume-footer-link'
@@ -18,6 +19,7 @@ function App() {
       <CommandPalette />
       <DrillSeedMarker />
       <FooterVersionBadge />
+      <FooterCommitBadge />
       <HeaderBuildBadge />
       <ResumeFooterLink />
       <section id="center">
