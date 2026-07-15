@@ -3,7 +3,7 @@
 ## Tasks
 
 - [ ] 1. Footer Locale Badge component
-- [ ] 1.1 Implement `FooterLocaleBadge` in `src/components/footer-locale-badge/footer-locale-badge.tsx`: a prop-less, state-less component that reads `navigator.language` once during render, falls back to the literal string `unknown` when it is falsy, lowercases the resolved value with a single `.toLowerCase()` call, and renders it with no label prefix inside a `<span title="browser locale" className="rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]">` wrapped in a `<div className="fixed right-20 bottom-3 print:hidden">` (no `z-index`, no `aria-hidden`, no interactive elements/handlers, no `useEffect`/`languagechange` listener, no new npm package, no `vite-env.d.ts` or `vite.config.ts` changes).
+- [x] 1.1 Implement `FooterLocaleBadge` in `src/components/footer-locale-badge/footer-locale-badge.tsx`: a prop-less, state-less component that reads `navigator.language` once during render, falls back to the literal string `unknown` when it is falsy, lowercases the resolved value with a single `.toLowerCase()` call, and renders it with no label prefix inside a `<span title="browser locale" className="rounded-full border border-[var(--border)] bg-[var(--code-bg)] px-2 py-0.5 text-xs text-[var(--text)]">` wrapped in a `<div className="fixed right-20 bottom-3 print:hidden">` (no `z-index`, no `aria-hidden`, no interactive elements/handlers, no `useEffect`/`languagechange` listener, no new npm package, no `vite-env.d.ts` or `vite.config.ts` changes).
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4, 4.1, 4.2, 4.3, 5.1, 5.2, 6.1, 6.2, 6.3, 6.4, 7.1_
   _Boundary: src/components/footer-locale-badge_
 
