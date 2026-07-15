@@ -10,7 +10,7 @@
   _Depends: 1.1_
 
 - [ ] 2. Footer Commit Badge offset adjustment
-- [ ] 2.1 (P) In `src/components/footer-commit-badge/footer-commit-badge.tsx`, change the wrapper offset from `right-20` to `right-44` only (no other class, markup, tooltip, fallback, or SHA-display change), and update the corresponding assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from expecting `right-20` to expecting `right-44`, tagging the updated assertion [req:3.3] [req:10.8].
+- [x] 2.1 (P) In `src/components/footer-commit-badge/footer-commit-badge.tsx`, change the wrapper offset from `right-20` to `right-44` only (no other class, markup, tooltip, fallback, or SHA-display change), and update the corresponding assertion in `src/components/footer-commit-badge/footer-commit-badge.test.tsx` from expecting `right-20` to expecting `right-44`, tagging the updated assertion [req:3.3] [req:10.8].
   _Requirements: 3.3, 3.4, 10.8_
   _Boundary: src/components/footer-commit-badge_
 
