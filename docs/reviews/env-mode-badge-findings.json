@@ -1,0 +1,19 @@
+{
+  "feature": "env-mode-badge",
+  "findings": [
+    {
+      "severity": "med",
+      "file": "src/components/footer-env-mode-badge/footer-env-mode-badge.test.tsx",
+      "line": 55,
+      "issue": "The 'no interactive elements' test checks `container.querySelector('[onclick]')`, but React attaches JSX onClick handlers via its synthetic event system, never as a literal DOM `onclick` attribute. Verified empirically: a probe component with a real `onClick={() => {}}` handler still returns null for this selector. The assertion therefore always passes and can never catch a regression where an onClick prop is added to this 'static, non-interactive' badge (requirement 5.1). The sibling footer-commit-badge.test.tsx (touched in this same diff) pairs the identical DOM check with `expect(source).not.toMatch(/onClick/)`, which is the mechanism that actually works — this new test omits it.",
+      "fix_hint": "Add a source-level regex check (read the component file with readFileSync as footer-commit-badge.test.tsx already does) asserting the source does not match /onClick/, alongside the existing DOM query. Already scoped as plans/012-onclick-test-only-checks-dom-attribute-n.md."
+    },
+    {
+      "severity": "med",
+      "file": "src/components/footer-env-mode-badge/app-integration.test.tsx",
+      "line": 10,
+      "issue": "This 125-line file is not authorized by design.md or tasks.md. design.md's File Structure table lists exactly 5 files for this feature and states 'No other files are touched'; tasks.md has no task creating an app-integration test (only task 1.2 for footer-env-mode-badge.test.tsx). It also uses fragile mechanisms disproportionate to what req 8.1-8.4 need: a recursive filesystem walk over every .tsx file under src/ grepping raw file contents for the literal string 'FooterEnvModeBadge', and regex-parsing App.tsx's raw source text to assert import-line counts and a literal JSX mount-block pattern — testing file text rather than rendered behavior, which the file already covers adequately at lines 42-49 via DOM order assertions.",
+      "fix_hint": "Delete the file, or fold the single DOM-order assertion (lines 42-49) into footer-env-mode-badge.test.tsx if mount-order coverage is wanted; drop the filesystem-scan and source-regex assertions. Already scoped as plans/011-drop-unscoped-over-engineered-app-integr.md."
+    }
+  ]
+}
