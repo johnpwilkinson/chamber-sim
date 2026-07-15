@@ -9,13 +9,13 @@ afterEach(() => {
 })
 
 describe('FooterEnvModeBadge', () => {
-  it('reads import.meta.env.MODE and renders it lowercased as plain text with no label prefix [req:1.1] [req:1.2] [req:1.3]', () => {
+  it('reads import.meta.env.MODE and renders it lowercased as plain text with no label prefix [req:1.1] [req:1.2] [req:1.3] [req:10.1]', () => {
     render(<FooterEnvModeBadge />)
     const badge = screen.getByText(expectedMode)
     expect(badge.textContent).toBe(expectedMode)
   })
 
-  it('positions the wrapper fixed right-20 bottom-3 and hides it when printing [req:3.1] [req:3.2]', () => {
+  it('positions the wrapper fixed right-20 bottom-3 and hides it when printing [req:3.1] [req:3.2] [req:10.2]', () => {
     render(<FooterEnvModeBadge />)
     const wrapper = screen.getByText(expectedMode).parentElement
     expect(wrapper?.className).toContain('fixed')
@@ -24,7 +24,7 @@ describe('FooterEnvModeBadge', () => {
     expect(wrapper?.className).toContain('print:hidden')
   })
 
-  it('renders the pill styling classes identical to the other footer badges [req:2.1]', () => {
+  it('renders the pill styling classes identical to the other footer badges [req:2.1] [req:10.4]', () => {
     render(<FooterEnvModeBadge />)
     const badge = screen.getByText(expectedMode)
     expect(badge.className).toContain('rounded-full')
@@ -37,14 +37,14 @@ describe('FooterEnvModeBadge', () => {
     expect(badge.className).toContain('text-[var(--text)]')
   })
 
-  it('sets title="vite mode" as a static string on the text-carrying span [req:4.2]', () => {
+  it('sets title="vite mode" as a static string on the text-carrying span [req:4.2] [req:10.3]', () => {
     render(<FooterEnvModeBadge />)
     const badge = screen.getByText(expectedMode)
     expect(badge.tagName).toBe('SPAN')
     expect(badge.getAttribute('title')).toBe('vite mode')
   })
 
-  it('sets no explicit z-index on the badge or its wrapper [req:2.4]', () => {
+  it('sets no explicit z-index on the badge or its wrapper [req:2.4] [req:10.5]', () => {
     render(<FooterEnvModeBadge />)
     const wrapper = screen.getByText(expectedMode).parentElement
     const badge = screen.getByText(expectedMode)
@@ -52,14 +52,14 @@ describe('FooterEnvModeBadge', () => {
     expect(badge.className).not.toMatch(/(^|\s)z-/)
   })
 
-  it('renders no interactive elements: no links, buttons, or click handlers [req:5.1] [req:5.2]', () => {
+  it('renders no interactive elements: no links, buttons, or click handlers [req:5.1] [req:5.2] [req:10.6]', () => {
     const { container } = render(<FooterEnvModeBadge />)
     expect(container.querySelector('a')).toBeNull()
     expect(container.querySelector('button')).toBeNull()
     expect(container.querySelector('[onclick]')).toBeNull()
   })
 
-  it('does not apply aria-hidden anywhere in the rendered markup [req:4.1]', () => {
+  it('does not apply aria-hidden anywhere in the rendered markup [req:4.1] [req:10.7]', () => {
     const { container } = render(<FooterEnvModeBadge />)
     expect(container.querySelector('[aria-hidden]')).toBeNull()
   })
