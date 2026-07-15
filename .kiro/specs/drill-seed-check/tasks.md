@@ -6,7 +6,7 @@
   _Boundary: src/components/drill-seed-marker_
 
 - [ ] 2. App.tsx mount and integration coverage
-- [ ] 2.1 In `src/App.tsx`, add exactly one import of `DrillSeedMarker` and exactly one `<DrillSeedMarker />` mount alongside the existing badge mounts, changing no other markup in the file. Add the integration test `src/components/drill-seed-marker/app-integration.test.tsx` asserting that rendering `App` mounts exactly one `DrillSeedMarker` instance, matching the sibling-feature convention. Name tests with [req:2.1].
+- [x] 2.1 In `src/App.tsx`, add exactly one import of `DrillSeedMarker` and exactly one `<DrillSeedMarker />` mount alongside the existing badge mounts, changing no other markup in the file. Add the integration test `src/components/drill-seed-marker/app-integration.test.tsx` asserting that rendering `App` mounts exactly one `DrillSeedMarker` instance, matching the sibling-feature convention. Name tests with [req:2.1].
   _Requirements: 2.1_
   _Boundary: src/App.tsx, src/components/drill-seed-marker_
   _Depends: 1.1_
