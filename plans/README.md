@@ -23,3 +23,7 @@ LOW findings are never executed; they are recorded as residual.
 | 902 | remove-no-op-req-6-1-sole-owner-test | LOW | residual |
 | 010 | no-test-for-mixed-fallback-state-full-sh | MED | pending |
 | 901 | hoist-repeated-magic-timestamp-to-a-name | LOW | residual |
+| 011 | drop-unscoped-over-engineered-app-integr | MED | pending |
+| 012 | onclick-test-only-checks-dom-attribute-n | MED | pending |
+| 902 | remove-self-referential-name-obfuscation | LOW | residual |
+| 903 | remove-duplicate-mode-text-assertion | LOW | residual |
