@@ -6,7 +6,7 @@
   _Boundary: src/components/resume-footer-link_
 
 - [ ] 2. App.tsx mount and integration coverage
-- [ ] 2.1 In `src/App.tsx`, add exactly one import of `ResumeFooterLink` and exactly one `<ResumeFooterLink />` mount alongside the existing `<FooterVersionBadge />` and `<HeaderBuildBadge />` mounts, changing no other markup in the file. Add the integration test `src/components/resume-footer-link/app-integration.test.tsx` asserting that rendering `App` mounts exactly one `ResumeFooterLink` instance, matching the sibling-feature convention used by `footer-version-badge/app-integration.test.tsx` and `header-build-badge/app-integration.test.tsx`, and that no file other than `src/App.tsx` mounts the component. Name tests with [req:5.1] [req:5.2] [req:5.3] [req:6.3].
+- [x] 2.1 In `src/App.tsx`, add exactly one import of `ResumeFooterLink` and exactly one `<ResumeFooterLink />` mount alongside the existing `<FooterVersionBadge />` and `<HeaderBuildBadge />` mounts, changing no other markup in the file. Add the integration test `src/components/resume-footer-link/app-integration.test.tsx` asserting that rendering `App` mounts exactly one `ResumeFooterLink` instance, matching the sibling-feature convention used by `footer-version-badge/app-integration.test.tsx` and `header-build-badge/app-integration.test.tsx`, and that no file other than `src/App.tsx` mounts the component. Name tests with [req:5.1] [req:5.2] [req:5.3] [req:6.3].
   _Requirements: 5.1, 5.2, 5.3, 6.3, 6.4, 6.5_
   _Boundary: src/App.tsx, src/components/resume-footer-link_
   _Depends: 1.1_
