@@ -1,8 +1,15 @@
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 import { afterEach, describe, expect, it } from 'vitest'
 import { cleanup, render, screen } from '@testing-library/react'
 import { FooterEnvModeBadge } from './footer-env-mode-badge'
 
 const expectedMode = import.meta.env.MODE.toLowerCase()
+
+const footerEnvModeBadgeSource = readFileSync(
+  path.resolve(process.cwd(), 'src/components/footer-env-mode-badge/footer-env-mode-badge.tsx'),
+  'utf8',
+)
 
 afterEach(() => {
   cleanup()
@@ -57,6 +64,7 @@ describe('FooterEnvModeBadge', () => {
     expect(container.querySelector('a')).toBeNull()
     expect(container.querySelector('button')).toBeNull()
     expect(container.querySelector('[onclick]')).toBeNull()
+    expect(footerEnvModeBadgeSource).not.toMatch(/onClick/)
   })
 
   it('does not apply aria-hidden anywhere in the rendered markup [req:4.1] [req:10.7]', () => {
