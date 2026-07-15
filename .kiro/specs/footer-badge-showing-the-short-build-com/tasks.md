@@ -6,7 +6,7 @@
   _Boundary: vite.config.ts_
 
 - [ ] 2. Ambient type declarations
-- [ ] 2.1 (P) Add `declare const __COMMIT_SHA__: string` and `declare const __COMMIT_SHA_FULL__: string` to `src/vite-env.d.ts` alongside the existing `__APP_VERSION__`/`__BUILD_TIME__` declarations, without modifying those existing lines.
+- [x] 2.1 (P) Add `declare const __COMMIT_SHA__: string` and `declare const __COMMIT_SHA_FULL__: string` to `src/vite-env.d.ts` alongside the existing `__APP_VERSION__`/`__BUILD_TIME__` declarations, without modifying those existing lines.
   _Requirements: 2.1, 2.2, 2.3_
   _Boundary: src/vite-env.d.ts_
 
