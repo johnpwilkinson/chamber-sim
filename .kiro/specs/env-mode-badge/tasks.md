@@ -15,7 +15,7 @@
   _Boundary: src/components/footer-commit-badge_
 
 - [ ] 3. App mount integration
-- [ ] 3.1 In `src/App.tsx`, import `FooterEnvModeBadge` from `./components/footer-env-mode-badge/footer-env-mode-badge` and mount `<FooterEnvModeBadge />` exactly once, positioned between the existing `<FooterVersionBadge />` and `<FooterCommitBadge />` mounts, with no other markup change to the file, so the three footer badges (`right-3`, `right-20`, `right-44`) render together without horizontal overlap.
+- [x] 3.1 In `src/App.tsx`, import `FooterEnvModeBadge` from `./components/footer-env-mode-badge/footer-env-mode-badge` and mount `<FooterEnvModeBadge />` exactly once, positioned between the existing `<FooterVersionBadge />` and `<FooterCommitBadge />` mounts, with no other markup change to the file, so the three footer badges (`right-3`, `right-20`, `right-44`) render together without horizontal overlap.
   _Requirements: 8.1, 8.2, 8.3, 8.4, 3.5_
   _Boundary: src/App.tsx_
   _Depends: 1.1_
