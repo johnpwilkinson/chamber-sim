@@ -13,7 +13,7 @@
   _Depends: 1.1_
 
 - [ ] 2. App root mount
-- [ ] 2.1 Edit `src/App.tsx` to import `DrillWaveBResume` from `./components/drill-wave-b-resume/drill-wave-b-resume` and mount `<DrillWaveBResume />` exactly once, immediately after the existing `<DrillSeedMarker />`. Every other line of the file — existing imports, the other component mounts, and all page markup — stays byte-identical. Verify `npm run build` passes.
+- [x] 2.1 Edit `src/App.tsx` to import `DrillWaveBResume` from `./components/drill-wave-b-resume/drill-wave-b-resume` and mount `<DrillWaveBResume />` exactly once, immediately after the existing `<DrillSeedMarker />`. Every other line of the file — existing imports, the other component mounts, and all page markup — stays byte-identical. Verify `npm run build` passes.
   _Requirements: 2.1, 2.2_
   _Boundary: src/App.tsx_
   _Depends: 1.1_
