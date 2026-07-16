@@ -28,3 +28,4 @@ LOW findings are never executed; they are recorded as residual.
 | 902 | remove-self-referential-name-obfuscation | LOW | residual |
 | 903 | remove-duplicate-mode-text-assertion | LOW | residual |
 | 013 | req-6-1-sole-owner-test-asserts-nothing | MED | fixed |
+| 014 | no-app-integration-test-for-the-app-tsx | MED | pending |
