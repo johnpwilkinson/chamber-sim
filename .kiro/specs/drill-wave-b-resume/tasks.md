@@ -7,7 +7,7 @@
   _Requirements: 1.1, 1.2, 1.3, 1.4_
   _Boundary: src/components/drill-wave-b-resume_
 
-- [ ] 1.2 Author `src/components/drill-wave-b-resume/drill-wave-b-resume.test.tsx` using the existing vitest + jsdom + testing-library setup (mirror `src/components/drill-seed-marker/drill-seed-marker.test.tsx`'s import style) covering: rendered text content equals exactly `wave-b-resumed` [req:3.1]; the rendered `<span>` carries `data-drill="wave-b-resume"` and the class `hidden` [req:3.2]; the rendered output contains no `<a>` or `<button>` elements and no `onclick` attribute [req:3.3]. All tests pass against the component from 1.1 via `npx vitest run`.
+- [x] 1.2 Author `src/components/drill-wave-b-resume/drill-wave-b-resume.test.tsx` using the existing vitest + jsdom + testing-library setup (mirror `src/components/drill-seed-marker/drill-seed-marker.test.tsx`'s import style) covering: rendered text content equals exactly `wave-b-resumed` [req:3.1]; the rendered `<span>` carries `data-drill="wave-b-resume"` and the class `hidden` [req:3.2]; the rendered output contains no `<a>` or `<button>` elements and no `onclick` attribute [req:3.3]. All tests pass against the component from 1.1 via `npx vitest run`.
   _Requirements: 3.1, 3.2, 3.3_
   _Boundary: src/components/drill-wave-b-resume_
   _Depends: 1.1_
