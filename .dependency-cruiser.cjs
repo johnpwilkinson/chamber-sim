@@ -148,6 +148,27 @@ module.exports = {
       from: { path: "^src/components/footer-locale-badge/footer-locale-badge\\.tsx$" },
       to: { path: "^(?!react$).+" },
     },
+    {
+      name: "sdd-drill-wave-b-resume-drill-independence",
+      comment: "sdd-derived from kiro design commitment \"Drill independence\": `src/components/drill-wave-b-resume` MUST NOT import `src/components/drill-seed-marker` — the two drill markers stay fully independent throwaways.",
+      severity: "warn",
+      from: { path: "^src/components/drill-wave-b-resume" },
+      to: { path: "^src/components/drill-seed-marker" },
+    },
+    {
+      name: "sdd-drill-wave-b-resume-no-ui-primitives",
+      comment: "sdd-derived from kiro design commitment \"No ui primitives\": `src/components/drill-wave-b-resume` MUST NOT import `src/components/ui` — plain HTML markup only, no shadcn primitives.",
+      severity: "warn",
+      from: { path: "^src/components/drill-wave-b-resume" },
+      to: { path: "^src/components/ui" },
+    },
+    {
+      name: "sdd-drill-wave-b-resume-no-feature-coupling",
+      comment: "sdd-derived from kiro design commitment \"No feature coupling\": `src/components/drill-wave-b-resume` MUST NOT import `src/components/command-palette` — the drill never touches real feature code.",
+      severity: "warn",
+      from: { path: "^src/components/drill-wave-b-resume" },
+      to: { path: "^src/components/command-palette" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },
