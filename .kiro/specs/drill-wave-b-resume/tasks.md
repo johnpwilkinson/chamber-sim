@@ -3,7 +3,7 @@
 ## Tasks
 
 - [ ] 1. Drill marker component
-- [ ] 1.1 Implement `DrillWaveBResume` in `src/components/drill-wave-b-resume/drill-wave-b-resume.tsx`: a prop-less, state-less function component (no imports beyond what the JSX requires) whose entire render is `<span data-drill="wave-b-resume" className="hidden">wave-b-resumed</span>` — exact text `wave-b-resumed`, no interactive elements, no event handlers, no additional markup.
+- [x] 1.1 Implement `DrillWaveBResume` in `src/components/drill-wave-b-resume/drill-wave-b-resume.tsx`: a prop-less, state-less function component (no imports beyond what the JSX requires) whose entire render is `<span data-drill="wave-b-resume" className="hidden">wave-b-resumed</span>` — exact text `wave-b-resumed`, no interactive elements, no event handlers, no additional markup.
   _Requirements: 1.1, 1.2, 1.3, 1.4_
   _Boundary: src/components/drill-wave-b-resume_
 
