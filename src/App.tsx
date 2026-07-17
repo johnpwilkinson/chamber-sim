@@ -6,6 +6,7 @@ import './App.css'
 import { CommandPalette } from './components/command-palette/command-palette'
 import { DrillSeedMarker } from './components/drill-seed-marker/drill-seed-marker'
 import { DrillWaveBResume } from './components/drill-wave-b-resume/drill-wave-b-resume'
+import { DrillWaveCTwins } from './components/drill-wave-c-twins/drill-wave-c-twins'
 import { FooterCommitBadge } from './components/footer-commit-badge/footer-commit-badge'
 import { FooterEnvModeBadge } from './components/footer-env-mode-badge/footer-env-mode-badge'
 import { FooterLocaleBadge } from './components/footer-locale-badge/footer-locale-badge'
@@ -22,6 +23,7 @@ function App() {
       <CommandPalette />
       <DrillSeedMarker />
       <DrillWaveBResume />
+      <DrillWaveCTwins />
       <FooterVersionBadge />
       <FooterLocaleBadge />
       <FooterEnvModeBadge />

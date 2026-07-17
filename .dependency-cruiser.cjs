@@ -169,6 +169,27 @@ module.exports = {
       from: { path: "^src/components/drill-wave-b-resume" },
       to: { path: "^src/components/command-palette" },
     },
+    {
+      name: "sdd-drill-wave-c-twins-drill-independence",
+      comment: "sdd-derived from kiro design commitment \"Drill independence\": `src/components/drill-wave-c-twins` MUST NOT import `src/components/drill-wave-b-resume` — the drill markers stay fully independent throwaways.",
+      severity: "error",
+      from: { path: "^src/components/drill-wave-c-twins" },
+      to: { path: "^src/components/drill-wave-b-resume" },
+    },
+    {
+      name: "sdd-drill-wave-c-twins-no-ui-primitives",
+      comment: "sdd-derived from kiro design commitment \"No ui primitives\": `src/components/drill-wave-c-twins` MUST NOT import `src/components/ui` — plain HTML markup only, no shadcn primitives.",
+      severity: "error",
+      from: { path: "^src/components/drill-wave-c-twins" },
+      to: { path: "^src/components/ui" },
+    },
+    {
+      name: "sdd-drill-wave-c-twins-no-feature-coupling",
+      comment: "sdd-derived from kiro design commitment \"No feature coupling\": `src/components/drill-wave-c-twins` MUST NOT import `src/components/command-palette` — the drill never touches real feature code.",
+      severity: "error",
+      from: { path: "^src/components/drill-wave-c-twins" },
+      to: { path: "^src/components/command-palette" },
+    },
     // EDIT-ME: sdd-derived rules (end)
   ],
   options: { doNotFollow: { path: "node_modules" } },
