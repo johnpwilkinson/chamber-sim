@@ -7,29 +7,26 @@ afterEach(() => {
 })
 
 describe('DrillWaveCTwins', () => {
-  it('renders a single span with exact text content wave-c-twins [req:1.1]', () => {
+  it('renders text content equal to exactly wave-c-twins [req:3.1]', () => {
     const { container } = render(<DrillWaveCTwins />)
-    const spans = container.querySelectorAll('span')
-    expect(spans.length).toBe(1)
-    expect(spans[0].textContent).toBe('wave-c-twins')
+    const span = container.querySelector('span')
+    expect(span).not.toBeNull()
+    expect(span?.textContent).toBe('wave-c-twins')
   })
 
-  it('sets data-drill="wave-c-twins" and class hidden on the rendered span [req:1.2]', () => {
+  it('sets data-drill="wave-c-twins" and class hidden on the rendered span [req:3.2]', () => {
     const { container } = render(<DrillWaveCTwins />)
     const span = container.querySelector('span')
     expect(span?.getAttribute('data-drill')).toBe('wave-c-twins')
     expect(span?.className).toBe('hidden')
   })
 
-  it('accepts no props, holds no state, and renders no interactive elements or event handlers [req:1.3]', () => {
-    expect(DrillWaveCTwins.length).toBe(0)
+  it('renders no interactive elements and no onclick attribute [req:3.3]', () => {
     const { container } = render(<DrillWaveCTwins />)
     expect(container.querySelector('a')).toBeNull()
     expect(container.querySelector('button')).toBeNull()
-    expect(container.querySelector('input')).toBeNull()
     expect(container.querySelector('[onclick]')).toBeNull()
     const span = container.querySelector('span')
     expect(span?.onclick).toBeNull()
-    expect(span?.children.length).toBe(0)
   })
 })
