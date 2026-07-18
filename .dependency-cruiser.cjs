@@ -193,14 +193,14 @@ module.exports = {
     {
       name: "sdd-drill-wave-f-rider-drill-isolation",
       comment: "sdd-derived from kiro design commitment \"Drill isolation\": `src/drill/drill-wave-f-rider` MUST NOT import `src/components` — the drill owns no source modules; this guards the reserved drill source path.",
-      severity: "warn",
+      severity: "error",
       from: { path: "^src/drill/drill-wave-f-rider" },
       to: { path: "^src/components" },
     },
     {
       name: "sdd-drill-wave-f-rider-product-isolation",
       comment: "sdd-derived from kiro design commitment \"Product isolation\": `src/components` MUST NOT import `src/drill/drill-wave-f-rider` — product code never depends on a throwaway drill marker.",
-      severity: "warn",
+      severity: "error",
       from: { path: "^src/components" },
       to: { path: "^src/drill/drill-wave-f-rider" },
     },
