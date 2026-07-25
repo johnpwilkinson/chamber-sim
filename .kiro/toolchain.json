@@ -4,7 +4,7 @@
     "build": [
       "npm",
       "run",
-      "build"
+      "verify"
     ],
     "test": [
       "npm",
