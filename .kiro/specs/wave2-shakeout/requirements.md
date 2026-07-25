@@ -1,72 +1,102 @@
 # Wave 2 Shakeout — Requirements
 
-## Introduction
+## Requirement 1: Lane Formatting Utility
 
-A two-task spec whose only job is to exercise the Wave 2 hardening seams on a real
-engine run: structural child isolation (legs and their children run in the task's
-worktree), the mechanical gate reaching the children as the authoritative check set,
-parallel read-only children with distinct output paths, and a recoverable gate red
-finalizing without a human gate.
+**User Story:** As the operator, I want one pure helper that turns a lane
+branch and task id into a single display string, so that the shakeout run has
+real, testable code to build and verify rather than a no-op.
 
-The repository's gate deliberately carries a linter (`npm run verify` = `oxlint && tsc -b && vite build`)
-and `src/App.tsx` deliberately contains a `debugger` statement, which oxlint rejects at
-error level while `tsc` and `vitest` are both blind to it. Task 1.1 owns `src/App.tsx`,
-so clearing that statement is inside its boundary.
+Acceptance Criteria:
+- 1.1 WHEN `formatLane` is called THE SYSTEM SHALL expose it from
+  `src/components/wave2-shakeout/formatLane.ts` as a single named export with
+  the signature `formatLane(branch: string, taskId: string): string`, with no
+  default export and no other exports from that module.
+- 1.2 WHEN `formatLane` is called with a `branch` that is empty after
+  `trim()` THE SYSTEM SHALL return the exact string `unknown`.
+- 1.3 WHEN `formatLane` is called with a `taskId` that is empty after
+  `trim()` THE SYSTEM SHALL return the exact string `unknown`.
+- 1.4 WHEN both arguments are valid per 1.2 and 1.3 THE SYSTEM SHALL return
+  the string `` `${branch.trim()}#${taskId.trim()}` `` — a single `#`
+  between the two trimmed values and no other characters.
+- 1.5 WHEN `formatLane` is called twice with the same arguments THE SYSTEM
+  SHALL return identical strings, holding no module-level mutable state and
+  reading no clock, no random source, no DOM, and no network, and importing
+  nothing.
 
-## Requirements
+## Requirement 2: Shakeout Marker Component
 
-### Requirement 1 — a pure formatter module
+**User Story:** As the operator, I want the formatted lane string rendered by
+a dedicated hidden marker component, so that the helper has a real consumer
+in the app tree and the production build covers it.
 
-**User Story:** As a developer, I want a tiny pure helper so the shakeout has real code to verify.
+Acceptance Criteria:
+- 2.1 WHEN `src/components/wave2-shakeout/wave2-shakeout.tsx` is authored THE
+  SYSTEM SHALL declare module-level constants `LANE_BRANCH` with the value
+  `lane/wave2-shakeout/1.1` and `LANE_TASK` with the value `1.1`.
+- 2.2 WHEN the `Wave2Shakeout` component renders THE SYSTEM SHALL render a
+  single `<span>` carrying `data-shakeout="wave2"` and the class `hidden`,
+  whose entire text content is the value returned by
+  `formatLane(LANE_BRANCH, LANE_TASK)`, with `formatLane` imported from
+  `./formatLane`.
+- 2.3 WHEN the `Wave2Shakeout` component is authored THE SYSTEM SHALL give it
+  no props, no state, no event handlers, no interactive elements, and no
+  formatting logic of its own.
+- 2.4 WHEN `src/App.tsx` is edited THE SYSTEM SHALL add one import of
+  `Wave2Shakeout` inside the existing alphabetical import block and mount
+  `<Wave2Shakeout />` exactly once, immediately after the existing
+  `<DrillWaveCTwins />` mount, leaving every other line byte-identical.
 
-#### Acceptance Criteria
+## Requirement 3: The Declared Gate Passes
 
-1.1. `src/components/wave2-shakeout/formatLane.ts` exports exactly one named function `export function formatLane(branch: string, taskId: string): string` and no default export.
-1.2. `formatLane` returns the literal string `unknown` when `branch` is an empty string after trimming.
-1.3. `formatLane` returns the literal string `unknown` when `taskId` is an empty string after trimming.
-1.4. Otherwise `formatLane` returns the template string `` `${branch.trim()}#${taskId.trim()}` ``.
-1.5. The module holds no module-level mutable state and reads no clock, random source, DOM, or network.
+**User Story:** As the engine, I want the repository's own declared gate
+green before a task finalizes, so that a narrower self-chosen check cannot
+report success against a tree the gate will reject.
 
-### Requirement 2 — a marker component
+Acceptance Criteria:
+- 3.1 WHEN task 1.1 completes THE SYSTEM SHALL leave no `debugger` statement
+  anywhere in `src/App.tsx`.
+- 3.2 WHEN `npm run verify` is executed THE SYSTEM SHALL exit zero, which
+  requires oxlint to report no errors in addition to a successful `tsc -b`
+  and `vite build`.
+- 3.3 WHEN `npm test` is executed THE SYSTEM SHALL exit zero with no failing
+  test.
 
-**User Story:** As a developer, I want the helper mounted so the app build covers it.
+## Requirement 4: Tests
 
-#### Acceptance Criteria
+**User Story:** As the operator, I want both surfaces pinned by tests, so
+that the shakeout produces real acceptance evidence rather than assertions
+about intent.
 
-2.1. `src/components/wave2-shakeout/wave2-shakeout.tsx` declares module-level `const LANE_BRANCH = 'lane/wave2-shakeout/1.1'` and `const LANE_TASK = '1.1'`.
-2.2. It exports a prop-less, state-less `export function Wave2Shakeout()` whose entire render is `<span data-shakeout="wave2" className="hidden">{formatLane(LANE_BRANCH, LANE_TASK)}</span>`, importing `formatLane` from `./formatLane`.
-2.3. It has no props, no state, no event handlers, no interactive elements, and no duplicated formatting logic.
-2.4. `src/App.tsx` imports `Wave2Shakeout` in the existing alphabetical import block and mounts `<Wave2Shakeout />` exactly once immediately after the existing `<DrillWaveCTwins />` mount.
+Acceptance Criteria:
+- 4.1 WHEN `formatLane('lane/x', '1.1')` is asserted THE SYSTEM SHALL return
+  the exact string `lane/x#1.1`.
+- 4.2 WHEN `formatLane('  lane/x  ', ' 1.1 ')` is asserted THE SYSTEM SHALL
+  return the exact string `lane/x#1.1`.
+- 4.3 WHEN each of `formatLane('', '1.1')`, `formatLane('   ', '1.1')`,
+  `formatLane('lane/x', '')` and `formatLane('lane/x', '   ')` is asserted
+  THE SYSTEM SHALL return the exact string `unknown`.
+- 4.4 WHEN the `Wave2Shakeout` component is rendered in a test THE SYSTEM
+  SHALL produce text content equal to exactly
+  `lane/wave2-shakeout/1.1#1.1`.
+- 4.5 WHEN the rendered `Wave2Shakeout` output is inspected THE SYSTEM SHALL
+  expose a `<span>` carrying `data-shakeout="wave2"` and the class `hidden`.
+- 4.6 WHEN `App` is rendered in a test THE SYSTEM SHALL contain exactly one
+  element matching `[data-shakeout="wave2"]`.
 
-### Requirement 3 — the repository gate passes
+## Requirement 5: Lane Counter
 
-**User Story:** As the engine, I want the declared gate green so the task can finalize.
+**User Story:** As the operator, I want a second, dependent surface so the
+run has more than one implementation leg to measure.
 
-#### Acceptance Criteria
-
-3.1. `src/App.tsx` contains no `debugger` statement when the task completes.
-3.2. `npm run verify` exits zero, which requires oxlint clean as well as a successful `tsc -b` and `vite build`.
-3.3. `npm test` exits zero.
-
-### Requirement 4 — tests
-
-**User Story:** As a developer, I want the behaviour pinned.
-
-#### Acceptance Criteria
-
-4.1. `src/components/wave2-shakeout/formatLane.test.ts` asserts `formatLane('lane/x', '1.1')` is `lane/x#1.1`.
-4.2. The same file asserts `formatLane('  lane/x  ', ' 1.1 ')` is `lane/x#1.1`.
-4.3. The same file asserts each of `formatLane('', '1.1')`, `formatLane('   ', '1.1')`, `formatLane('lane/x', '')`, `formatLane('lane/x', '   ')` is `unknown`.
-4.4. `src/components/wave2-shakeout/wave2-shakeout.test.tsx` mirrors the import style of `src/components/drill-wave-c-twins/drill-wave-c-twins.test.tsx` and asserts the rendered text content is exactly `lane/wave2-shakeout/1.1#1.1`.
-4.5. The same file asserts the rendered `<span>` carries `data-shakeout="wave2"` and the class `hidden`.
-4.6. The same file renders `<App />` from `../../App` and asserts `container.querySelectorAll('[data-shakeout="wave2"]')` has length 1.
-
-### Requirement 5 — a second, dependent surface
-
-**User Story:** As a developer, I want a second task so the run has more than one leg.
-
-#### Acceptance Criteria
-
-5.1. `src/components/wave2-shakeout/laneCount.ts` exports exactly one named function `export function laneCount(lanes: readonly string[]): number` returning the number of entries that are non-empty after trimming.
-5.2. `src/components/wave2-shakeout/laneCount.test.ts` asserts `laneCount([])` is `0`, `laneCount(['a', '', '  ', 'b'])` is `2`, and `laneCount(['  a  '])` is `1`.
-5.3. No file outside `src/components/wave2-shakeout/` is modified by this requirement.
+Acceptance Criteria:
+- 5.1 WHEN `laneCount` is called THE SYSTEM SHALL expose it from
+  `src/components/wave2-shakeout/laneCount.ts` as a single named export with
+  the signature `laneCount(lanes: readonly string[]): number`, importing
+  nothing, and SHALL return the number of entries that are non-empty after
+  `trim()`.
+- 5.2 WHEN `laneCount([])`, `laneCount(['a', '', '  ', 'b'])` and
+  `laneCount(['  a  '])` are asserted THE SYSTEM SHALL return `0`, `2` and
+  `1` respectively.
+- 5.3 WHEN task 2.1 completes THE SYSTEM SHALL have modified no file outside
+  `src/components/wave2-shakeout/`, and SHALL NOT have mounted `laneCount`
+  anywhere.
