@@ -1,0 +1,24 @@
+# Wave 3 Width-3 — Implementation Plan
+
+## Tasks
+
+- [ ] 1. Lane key foundation
+- [ ] 1.1 Add `src/components/wave3-w3/laneKey.ts`: a module with no import statements exporting exactly one named export `export function laneKey(feature: string, taskId: string): string` and no default export [req:1.1] — return the literal string `unknown` when `feature.trim()` is empty [req:1.2], return `unknown` when `taskId.trim()` is empty [req:1.3], otherwise return the template string `` `${feature.trim()}/${taskId.trim()}` `` [req:1.4]; hold no module-level mutable state and read no clock, random source, DOM, or network [req:1.5]. Add `src/components/wave3-w3/laneKey.test.ts` with plain vitest tests (no DOM, no testing-library) asserting `laneKey('wave3-w3', '1.1')` is `wave3-w3/1.1` [req:6.1]; `laneKey('  wave3-w3  ', ' 1.1 ')` is `wave3-w3/1.1` [req:6.2]; and each of `laneKey('', '1.1')`, `laneKey('   ', '1.1')`, `laneKey('wave3-w3', '')`, `laneKey('wave3-w3', '   ')` is `unknown` [req:6.3]. Modify no file outside `src/components/wave3-w3/` — in particular do NOT edit `src/App.tsx`. Add no npm dependency and edit no config file [req:5.3]. The repository gate for this task is `npm run build` plus `npm test`: both must exit zero [req:5.1, 5.2].
+  _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 5.1, 5.2, 5.3, 6.1, 6.2, 6.3_
+  _Boundary: src/components/wave3-w3_
+
+- [ ] 2. Three independent siblings
+- [ ] 2.1 (P) Add `src/components/wave3-w3-a/tagA.ts`: a module exporting exactly one named export `export function tagA(taskId: string): string` and no default export [req:2.1], returning `` `A:${laneKey('wave3-w3', taskId)}` `` with `laneKey` imported from `../wave3-w3/laneKey` — never reimplemented, never inlined [req:2.2]. Import nothing from `src/components/wave3-w3-b/` and nothing from `src/components/wave3-w3-c/` [req:2.3]. Add `src/components/wave3-w3-a/tagA.test.ts` with plain vitest tests (no DOM) asserting `tagA('2.1')` is `A:wave3-w3/2.1` and `tagA('')` is `A:unknown` [req:6.4]. Modify no file outside `src/components/wave3-w3-a/`: do NOT edit `src/App.tsx`, do NOT edit anything under `src/components/wave3-w3/`, and do NOT create or edit anything under `src/components/wave3-w3-b/` or `src/components/wave3-w3-c/` — sibling tasks own those directories and are running at the same time as you. Add no npm dependency and edit no config file [req:5.3]. Verify with `npm run build` and `npm test`, both of which must exit zero [req:5.1, 5.2].
+  _Requirements: 2.1, 2.2, 2.3, 5.1, 5.2, 5.3, 6.4_
+  _Boundary: src/components/wave3-w3-a_
+  _Depends: 1.1_
+
+- [ ] 2.2 (P) Add `src/components/wave3-w3-b/tagB.ts`: a module exporting exactly one named export `export function tagB(taskId: string): string` and no default export [req:3.1], returning `` `B:${laneKey('wave3-w3', taskId)}` `` with `laneKey` imported from `../wave3-w3/laneKey` — never reimplemented, never inlined [req:3.2]. Import nothing from `src/components/wave3-w3-a/` and nothing from `src/components/wave3-w3-c/` [req:3.3]. Add `src/components/wave3-w3-b/tagB.test.ts` with plain vitest tests (no DOM) asserting `tagB('2.2')` is `B:wave3-w3/2.2` and `tagB('')` is `B:unknown` [req:6.5]. Modify no file outside `src/components/wave3-w3-b/`: do NOT edit `src/App.tsx`, do NOT edit anything under `src/components/wave3-w3/`, and do NOT create or edit anything under `src/components/wave3-w3-a/` or `src/components/wave3-w3-c/` — sibling tasks own those directories and are running at the same time as you. Add no npm dependency and edit no config file [req:5.3]. Verify with `npm run build` and `npm test`, both of which must exit zero [req:5.1, 5.2].
+  _Requirements: 3.1, 3.2, 3.3, 5.1, 5.2, 5.3, 6.5_
+  _Boundary: src/components/wave3-w3-b_
+  _Depends: 1.1_
+
+- [ ] 2.3 (P) Add `src/components/wave3-w3-c/tagC.ts`: a module exporting exactly one named export `export function tagC(taskId: string): string` and no default export [req:4.1], returning `` `C:${laneKey('wave3-w3', taskId)}` `` with `laneKey` imported from `../wave3-w3/laneKey` — never reimplemented, never inlined [req:4.2]. Import nothing from `src/components/wave3-w3-a/` and nothing from `src/components/wave3-w3-b/` [req:4.3]. Add `src/components/wave3-w3-c/tagC.test.ts` with plain vitest tests (no DOM) asserting `tagC('2.3')` is `C:wave3-w3/2.3` and `tagC('')` is `C:unknown` [req:6.6]. Modify no file outside `src/components/wave3-w3-c/`: do NOT edit `src/App.tsx`, do NOT edit anything under `src/components/wave3-w3/`, and do NOT create or edit anything under `src/components/wave3-w3-a/` or `src/components/wave3-w3-b/` — sibling tasks own those directories and are running at the same time as you. Add no npm dependency and edit no config file [req:5.3]. Verify with `npm run build` and `npm test`, both of which must exit zero [req:5.1, 5.2].
+  _Requirements: 4.1, 4.2, 4.3, 5.1, 5.2, 5.3, 6.6_
+  _Boundary: src/components/wave3-w3-c_
+  _Depends: 1.1_
