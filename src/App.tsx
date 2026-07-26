@@ -16,7 +16,6 @@ import { ResumeFooterLink } from './components/resume-footer-link/resume-footer-
 import { KeyboardShortcutsProvider } from './keyboard-shortcuts'
 
 function App() {
-  debugger
   const [count, setCount] = useState(0)
 
   return (

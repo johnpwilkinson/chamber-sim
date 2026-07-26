@@ -8,8 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "vitest run --passWithNoTests",
-    "verify": "oxlint && tsc -b && vite build"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.19",
