@@ -107,3 +107,11 @@ all four `data-testid`s are present under `[data-testid="gauntlet-panel"]`)
 and render `App` standalone (asserting `GauntletPanel` mounts exactly
 once and pre-existing markup is unchanged) — no end-to-end browser
 automation is in scope.
+
+## Boundary Commitments
+
+| Commitment | Detail |
+|---|---|
+| Pure helpers own no UI | `src/lib/gauntlet` MUST NOT import `src/components` — the four formatting modules and `core.ts` are pure functions with zero React or component dependencies. |
+| Gauntlet isolation | `src/components/gauntlet` MUST NOT import `src/components/command-palette` — the drill feature is isolated from unrelated features; its only cross-tree imports are `src/lib/gauntlet` helpers. |
+| Drill path stays clear | `src/drill` MUST NOT import `src/components/gauntlet` — the reserved drill source path owns no dependency on this feature. |
