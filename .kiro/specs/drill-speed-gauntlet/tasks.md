@@ -1,10 +1,10 @@
 # Implementation Plan: Speed Gauntlet Drill
 
 - [ ] 1. Core Utilities Foundation
-- [ ] 1.1 (P) Add `src/lib/gauntlet/core.ts` exporting `clamp(n: number, lo: number, hi: number): number` (returns `n` bounded to `[lo, hi]`) and `formatCount(n: number, noun: string): string` (clamps negative `n` to `0` via `clamp()`, returns `"1 " + noun` for exactly `1`, and `"{n} " + noun + "s"` otherwise); no other exports.
+- [x] 1.1 (P) Add `src/lib/gauntlet/core.ts` exporting `clamp(n: number, lo: number, hi: number): number` (returns `n` bounded to `[lo, hi]`) and `formatCount(n: number, noun: string): string` (clamps negative `n` to `0` via `clamp()`, returns `"1 " + noun` for exactly `1`, and `"{n} " + noun + "s"` otherwise); no other exports.
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
   _Boundary: src/lib/gauntlet/core.ts_
-- [ ]* 1.2 Add `src/lib/gauntlet/core.test.ts` covering: `clamp` returns `n` unchanged inside range, name this case [req:1.1]; `clamp` returns `lo` below range, name this case [req:1.2]; `clamp` returns `hi` above range, name this case [req:1.3]; `formatCount` singular at `n === 1`, name this case [req:1.4]; `formatCount` pluralized for `n === 0` and `n > 1`, name this case [req:1.5]; `formatCount` clamps a negative `n` to `0` before formatting, name this case [req:1.6].
+- [x]* 1.2 Add `src/lib/gauntlet/core.test.ts` covering: `clamp` returns `n` unchanged inside range, name this case [req:1.1]; `clamp` returns `lo` below range, name this case [req:1.2]; `clamp` returns `hi` above range, name this case [req:1.3]; `formatCount` singular at `n === 1`, name this case [req:1.4]; `formatCount` pluralized for `n === 0` and `n > 1`, name this case [req:1.5]; `formatCount` clamps a negative `n` to `0` before formatting, name this case [req:1.6].
   _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
   _Boundary: src/lib/gauntlet/core.test.ts_
   _Depends: 1.1_
