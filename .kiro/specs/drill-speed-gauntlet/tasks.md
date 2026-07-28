@@ -23,14 +23,14 @@
   _Depends: 2.1, 2.2_
 
 - [ ] 3. Bravo Badge (Ordinals)
-- [ ] 3.1 (P) Add `src/lib/gauntlet/ordinal.ts` exporting `toOrdinal(n: number): string`, converting a positive integer to its English ordinal string, applying the `1st`/`2nd`/`3rd`/`Nth` rule with the `11th`/`12th`/`13th` exception.
+- [x] 3.1 (P) Add `src/lib/gauntlet/ordinal.ts` exporting `toOrdinal(n: number): string`, converting a positive integer to its English ordinal string, applying the `1st`/`2nd`/`3rd`/`Nth` rule with the `11th`/`12th`/`13th` exception.
   _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5_
   _Boundary: src/lib/gauntlet/ordinal.ts_
-- [ ] 3.2 Add `src/components/gauntlet/bravo-badge.tsx` exporting `BravoBadge({ count }: { count: number })`, which clamps `count` to `[1, 999]` via `clamp()` from `src/lib/gauntlet/core.ts`, converts it via `toOrdinal()` from `src/lib/gauntlet/ordinal.ts`, and renders `"Bravo " + <ordinal>` inside an element with `data-testid="bravo-badge"`; no local state, no side effects.
+- [x] 3.2 Add `src/components/gauntlet/bravo-badge.tsx` exporting `BravoBadge({ count }: { count: number })`, which clamps `count` to `[1, 999]` via `clamp()` from `src/lib/gauntlet/core.ts`, converts it via `toOrdinal()` from `src/lib/gauntlet/ordinal.ts`, and renders `"Bravo " + <ordinal>` inside an element with `data-testid="bravo-badge"`; no local state, no side effects.
   _Requirements: 3.6, 3.7_
   _Boundary: src/components/gauntlet/bravo-badge.tsx_
   _Depends: 3.1, 1.1_
-- [ ]* 3.3 Add `src/lib/gauntlet/ordinal.test.ts` and `src/components/gauntlet/bravo-badge.test.tsx` covering: `toOrdinal` appends `"st"` for values ending in `1` excluding `11`, name this case [req:3.1]; `toOrdinal` appends `"nd"` for values ending in `2` excluding `12`, name this case [req:3.2]; `toOrdinal` appends `"rd"` for values ending in `3` excluding `13`, name this case [req:3.3]; `toOrdinal` appends `"th"` for `11`, `12`, and `13`, name this case [req:3.4]; `toOrdinal` appends `"th"` for a representative other value, name this case [req:3.5]; `BravoBadge` clamps an out-of-range `count` prop to `[1, 999]` before rendering, name this case [req:3.6]; `BravoBadge` renders `"Bravo "` plus the ordinal inside `[data-testid="bravo-badge"]`, name this case [req:3.7].
+- [x]* 3.3 Add `src/lib/gauntlet/ordinal.test.ts` and `src/components/gauntlet/bravo-badge.test.tsx` covering: `toOrdinal` appends `"st"` for values ending in `1` excluding `11`, name this case [req:3.1]; `toOrdinal` appends `"nd"` for values ending in `2` excluding `12`, name this case [req:3.2]; `toOrdinal` appends `"rd"` for values ending in `3` excluding `13`, name this case [req:3.3]; `toOrdinal` appends `"th"` for `11`, `12`, and `13`, name this case [req:3.4]; `toOrdinal` appends `"th"` for a representative other value, name this case [req:3.5]; `BravoBadge` clamps an out-of-range `count` prop to `[1, 999]` before rendering, name this case [req:3.6]; `BravoBadge` renders `"Bravo "` plus the ordinal inside `[data-testid="bravo-badge"]`, name this case [req:3.7].
   _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7_
   _Boundary: src/lib/gauntlet/ordinal.test.ts, src/components/gauntlet/bravo-badge.test.tsx_
   _Depends: 3.1, 3.2_
