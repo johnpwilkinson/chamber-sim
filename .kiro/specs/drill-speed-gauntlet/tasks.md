@@ -36,15 +36,15 @@
   _Depends: 3.1, 3.2_
 
 - [ ] 4. Charlie Badge (Duration)
-- [ ] 4.1 (P) Add `src/lib/gauntlet/duration.ts` exporting `formatDuration(seconds: number): string`, clamping negative `seconds` to `0` via `clamp()` from `src/lib/gauntlet/core.ts`, then returning a zero-padded `"{h}h {mm}m {ss}s"` string (minutes and seconds zero-padded to two digits, hours unpadded).
+- [x] 4.1 (P) Add `src/lib/gauntlet/duration.ts` exporting `formatDuration(seconds: number): string`, clamping negative `seconds` to `0` via `clamp()` from `src/lib/gauntlet/core.ts`, then returning a zero-padded `"{h}h {mm}m {ss}s"` string (minutes and seconds zero-padded to two digits, hours unpadded).
   _Requirements: 4.1, 4.2, 4.3_
   _Boundary: src/lib/gauntlet/duration.ts_
   _Depends: 1.1_
-- [ ] 4.2 Add `src/components/gauntlet/charlie-badge.tsx` exporting `CharlieBadge({ seconds }: { seconds: number })`, which renders `formatDuration(seconds)` from `src/lib/gauntlet/duration.ts` inside an element with `data-testid="charlie-badge"`; no local state, no side effects.
+- [x] 4.2 Add `src/components/gauntlet/charlie-badge.tsx` exporting `CharlieBadge({ seconds }: { seconds: number })`, which renders `formatDuration(seconds)` from `src/lib/gauntlet/duration.ts` inside an element with `data-testid="charlie-badge"`; no local state, no side effects.
   _Requirements: 4.4_
   _Boundary: src/components/gauntlet/charlie-badge.tsx_
   _Depends: 4.1_
-- [ ]* 4.3 Add `src/lib/gauntlet/duration.test.ts` and `src/components/gauntlet/charlie-badge.test.tsx` covering: `formatDuration` returns the correct zero-padded form for a value spanning hours, minutes, and seconds, name this case [req:4.1]; `formatDuration` returns `"0h "` prefix with zero-padded minutes/seconds for a sub-minute value, name this case [req:4.2]; `formatDuration` clamps a negative value to `"0h 00m 00s"`, name this case [req:4.3]; `CharlieBadge` renders the formatted duration inside `[data-testid="charlie-badge"]`, name this case [req:4.4].
+- [x]* 4.3 Add `src/lib/gauntlet/duration.test.ts` and `src/components/gauntlet/charlie-badge.test.tsx` covering: `formatDuration` returns the correct zero-padded form for a value spanning hours, minutes, and seconds, name this case [req:4.1]; `formatDuration` returns `"0h "` prefix with zero-padded minutes/seconds for a sub-minute value, name this case [req:4.2]; `formatDuration` clamps a negative value to `"0h 00m 00s"`, name this case [req:4.3]; `CharlieBadge` renders the formatted duration inside `[data-testid="charlie-badge"]`, name this case [req:4.4].
   _Requirements: 4.1, 4.2, 4.3, 4.4_
   _Boundary: src/lib/gauntlet/duration.test.ts, src/components/gauntlet/charlie-badge.test.tsx_
   _Depends: 4.1, 4.2_
