@@ -50,14 +50,14 @@
   _Depends: 4.1, 4.2_
 
 - [ ] 5. Delta Badge (Initials)
-- [ ] 5.1 (P) Add `src/lib/gauntlet/initials.ts` exporting `initials(name: string): string`, returning the uppercase first letters of the first and last whitespace-separated word (middle words ignored), the uppercase first letter alone for a single-word name, and `''` for an empty or whitespace-only string.
+- [x] 5.1 (P) Add `src/lib/gauntlet/initials.ts` exporting `initials(name: string): string`, returning the uppercase first letters of the first and last whitespace-separated word (middle words ignored), the uppercase first letter alone for a single-word name, and `''` for an empty or whitespace-only string.
   _Requirements: 5.1, 5.2, 5.3, 5.4_
   _Boundary: src/lib/gauntlet/initials.ts_
-- [ ] 5.2 Add `src/components/gauntlet/delta-badge.tsx` exporting `DeltaBadge({ name, memberCount }: { name: string; memberCount: number })`, which renders `"Delta " + initials(name)` from `src/lib/gauntlet/initials.ts` followed by `" (" + formatCount(memberCount, 'member') + ")"` using `formatCount()` from `src/lib/gauntlet/core.ts`, inside an element with `data-testid="delta-badge"`; no local state, no side effects.
+- [x] 5.2 Add `src/components/gauntlet/delta-badge.tsx` exporting `DeltaBadge({ name, memberCount }: { name: string; memberCount: number })`, which renders `"Delta " + initials(name)` from `src/lib/gauntlet/initials.ts` followed by `" (" + formatCount(memberCount, 'member') + ")"` using `formatCount()` from `src/lib/gauntlet/core.ts`, inside an element with `data-testid="delta-badge"`; no local state, no side effects.
   _Requirements: 5.5_
   _Boundary: src/components/gauntlet/delta-badge.tsx_
   _Depends: 5.1, 1.1_
-- [ ]* 5.3 Add `src/lib/gauntlet/initials.test.ts` and `src/components/gauntlet/delta-badge.test.tsx` covering: `initials` returns concatenated uppercase first+last letters for a two-word name, name this case [req:5.1]; `initials` returns a single uppercase letter for a single-word name, name this case [req:5.2]; `initials` returns `''` for an empty and a whitespace-only string, name this case [req:5.3]; `initials` uses only the first and last word for a name with more than two words, name this case [req:5.4]; `DeltaBadge` renders `"Delta "`, the initials, and the parenthesized `formatCount` member text inside `[data-testid="delta-badge"]`, name this case [req:5.5].
+- [x]* 5.3 Add `src/lib/gauntlet/initials.test.ts` and `src/components/gauntlet/delta-badge.test.tsx` covering: `initials` returns concatenated uppercase first+last letters for a two-word name, name this case [req:5.1]; `initials` returns a single uppercase letter for a single-word name, name this case [req:5.2]; `initials` returns `''` for an empty and a whitespace-only string, name this case [req:5.3]; `initials` uses only the first and last word for a name with more than two words, name this case [req:5.4]; `DeltaBadge` renders `"Delta "`, the initials, and the parenthesized `formatCount` member text inside `[data-testid="delta-badge"]`, name this case [req:5.5].
   _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5_
   _Boundary: src/lib/gauntlet/initials.test.ts, src/components/gauntlet/delta-badge.test.tsx_
   _Depends: 5.1, 5.2_
