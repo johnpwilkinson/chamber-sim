@@ -10,14 +10,14 @@
   _Depends: 1.1_
 
 - [ ] 2. Alpha Badge (Roman Numerals)
-- [ ] 2.1 (P) Add `src/lib/gauntlet/roman.ts` exporting `toRoman(n: number): string`, converting an integer `1 <= n <= 3999` to its Roman numeral string, and throwing a `RangeError` for any `n` outside that range; no clamping inside this module.
+- [x] 2.1 (P) Add `src/lib/gauntlet/roman.ts` exporting `toRoman(n: number): string`, converting an integer `1 <= n <= 3999` to its Roman numeral string, and throwing a `RangeError` for any `n` outside that range; no clamping inside this module.
   _Requirements: 2.1, 2.2, 2.3_
   _Boundary: src/lib/gauntlet/roman.ts_
-- [ ] 2.2 Add `src/components/gauntlet/alpha-badge.tsx` exporting `AlphaBadge({ count }: { count: number })`, which clamps `count` to `[1, 3999]` via `clamp()` from `src/lib/gauntlet/core.ts`, converts it via `toRoman()` from `src/lib/gauntlet/roman.ts`, and renders `"Alpha " + <roman numeral>` inside a `<span data-testid="alpha-badge">`; no local state, no side effects.
+- [x] 2.2 Add `src/components/gauntlet/alpha-badge.tsx` exporting `AlphaBadge({ count }: { count: number })`, which clamps `count` to `[1, 3999]` via `clamp()` from `src/lib/gauntlet/core.ts`, converts it via `toRoman()` from `src/lib/gauntlet/roman.ts`, and renders `"Alpha " + <roman numeral>` inside a `<span data-testid="alpha-badge">`; no local state, no side effects.
   _Requirements: 2.4, 2.5_
   _Boundary: src/components/gauntlet/alpha-badge.tsx_
   _Depends: 2.1, 1.1_
-- [ ]* 2.3 Add `src/lib/gauntlet/roman.test.ts` and `src/components/gauntlet/alpha-badge.test.tsx` covering: `toRoman` converts a representative mid-range value correctly, name this case [req:2.1]; `toRoman(3999)` returns `"MMMCMXCIX"`, name this case [req:2.2]; `toRoman` throws `RangeError` for `0` and for `4000`, name this case [req:2.3]; `AlphaBadge` clamps an out-of-range `count` prop to `[1, 3999]` before rendering, name this case [req:2.4]; `AlphaBadge` renders `"Alpha "` plus the numeral inside `[data-testid="alpha-badge"]`, name this case [req:2.5].
+- [x]* 2.3 Add `src/lib/gauntlet/roman.test.ts` and `src/components/gauntlet/alpha-badge.test.tsx` covering: `toRoman` converts a representative mid-range value correctly, name this case [req:2.1]; `toRoman(3999)` returns `"MMMCMXCIX"`, name this case [req:2.2]; `toRoman` throws `RangeError` for `0` and for `4000`, name this case [req:2.3]; `AlphaBadge` clamps an out-of-range `count` prop to `[1, 3999]` before rendering, name this case [req:2.4]; `AlphaBadge` renders `"Alpha "` plus the numeral inside `[data-testid="alpha-badge"]`, name this case [req:2.5].
   _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
   _Boundary: src/lib/gauntlet/roman.test.ts, src/components/gauntlet/alpha-badge.test.tsx_
   _Depends: 2.1, 2.2_
