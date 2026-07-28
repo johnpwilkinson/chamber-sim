@@ -11,6 +11,7 @@ import { FooterCommitBadge } from './components/footer-commit-badge/footer-commi
 import { FooterEnvModeBadge } from './components/footer-env-mode-badge/footer-env-mode-badge'
 import { FooterLocaleBadge } from './components/footer-locale-badge/footer-locale-badge'
 import { FooterVersionBadge } from './components/footer-version-badge/footer-version-badge'
+import { GauntletPanel } from './components/gauntlet/gauntlet-panel'
 import { HeaderBuildBadge } from './components/header-build-badge/header-build-badge'
 import { ResumeFooterLink } from './components/resume-footer-link/resume-footer-link'
 import { KeyboardShortcutsProvider } from './keyboard-shortcuts'
@@ -30,6 +31,7 @@ function App() {
       <FooterCommitBadge />
       <HeaderBuildBadge />
       <ResumeFooterLink />
+      <GauntletPanel />
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />

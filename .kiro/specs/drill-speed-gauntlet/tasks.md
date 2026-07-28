@@ -63,15 +63,15 @@
   _Depends: 5.1, 5.2_
 
 - [ ] 6. Gauntlet Panel Integration
-- [ ] 6.1 Add `src/components/gauntlet/gauntlet-panel.tsx` exporting `GauntletPanel()`, which renders `AlphaBadge`, `BravoBadge`, `CharlieBadge`, and `DeltaBadge` (each imported from its own component file, each supplied fixed demo props) inside a `<section data-testid="gauntlet-panel">`; no state, no props of its own.
+- [x] 6.1 Add `src/components/gauntlet/gauntlet-panel.tsx` exporting `GauntletPanel()`, which renders `AlphaBadge`, `BravoBadge`, `CharlieBadge`, and `DeltaBadge` (each imported from its own component file, each supplied fixed demo props) inside a `<section data-testid="gauntlet-panel">`; no state, no props of its own.
   _Requirements: 6.1, 6.3_
   _Boundary: src/components/gauntlet/gauntlet-panel.tsx_
   _Depends: 2.2, 3.2, 4.2, 5.2_
-- [ ] 6.2 Edit `src/App.tsx` to render `<GauntletPanel />` exactly once, unconditionally, importing it from `src/components/gauntlet/gauntlet-panel.tsx`, leaving all other existing markup unchanged.
+- [x] 6.2 Edit `src/App.tsx` to render `<GauntletPanel />` exactly once, unconditionally, importing it from `src/components/gauntlet/gauntlet-panel.tsx`, leaving all other existing markup unchanged.
   _Requirements: 6.2, 6.4_
   _Boundary: src/App.tsx_
   _Depends: 6.1_
-- [ ]* 6.3 Add `src/components/gauntlet/gauntlet-panel.test.tsx` and `src/App.test.tsx` covering: `GauntletPanel` renders all four badges' `data-testid`s (`alpha-badge`, `bravo-badge`, `charlie-badge`, `delta-badge`) as descendants of `[data-testid="gauntlet-panel"]`, name this case [req:6.1] [req:6.3]; `App` renders `GauntletPanel` exactly once, unconditionally, name this case [req:6.2] [req:6.4].
+- [x]* 6.3 Add `src/components/gauntlet/gauntlet-panel.test.tsx` and `src/App.test.tsx` covering: `GauntletPanel` renders all four badges' `data-testid`s (`alpha-badge`, `bravo-badge`, `charlie-badge`, `delta-badge`) as descendants of `[data-testid="gauntlet-panel"]`, name this case [req:6.1] [req:6.3]; `App` renders `GauntletPanel` exactly once, unconditionally, name this case [req:6.2] [req:6.4].
   _Requirements: 6.1, 6.2, 6.3, 6.4_
   _Boundary: src/components/gauntlet/gauntlet-panel.test.tsx, src/App.test.tsx_
   _Depends: 6.1, 6.2_
