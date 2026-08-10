@@ -214,9 +214,12 @@ async function cmdRun(root, [taskFile, name, model]) {
                   '--provider', cfg.provider ?? 'claude-p',
                   '--model', model, prompt];
     code = await new Promise((resolveP) => {
-      const p = spawn('pi', args, { cwd: root });
+      // stdin MUST be closed: pi hangs forever on unclosed non-tty stdin (proven
+      // trap, chamber/runner.mjs:518). An inherited pipe wedged all six c1 helpers
+      // pre-request — 50+ min alive, zero HTTP. stdout stays piped (usage metering
+      // reads it); stderr is discarded here as it always was.
+      const p = spawn('pi', args, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] });
       p.stdout.on('data', (c) => { stdout += c; });
-      p.stderr.on('data', () => {});
       p.on('error', () => resolveP(-1));
       p.on('close', (c) => resolveP(c ?? -1));
     });
