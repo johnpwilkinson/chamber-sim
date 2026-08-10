@@ -58,17 +58,40 @@ export function parseCreateArgs(argv, config) {
 // Accumulate usage across pi --mode json output lines. Tolerant of both
 // {input,output} and {input_tokens,output_tokens} spellings; anything
 // unparseable contributes nothing (floor, never a throw).
+//
+// REAL pi --mode json carries usage NESTED at message.usage inside `message_end`
+// events — there is no top-level `usage` key and no `turns` field anywhere
+// (verified against live output; the old top-level-only contract floored every
+// helper to zero in c1 launch 3: childCalls 6, childOut 0, durations real). The
+// top-level path is kept for backward-compat with synthetic lines and any future
+// pi shape.
 export function usageFromPiJson(text) {
   const acc = { input: 0, output: 0, cacheRead: 0, turns: 0 };
   for (const line of String(text ?? '').split('\n')) {
     let o = null;
     try { o = JSON.parse(line); } catch { continue; }
-    const u = o?.usage;
-    if (!u || typeof u !== 'object') continue;
+    const top = o?.usage;
+    const nested = o?.message?.usage;
+    let u = null;
+    let countsTurn = false;
+    if (top && typeof top === 'object') {
+      u = top;
+    } else if (
+      nested && typeof nested === 'object' &&
+      // Only MESSAGE-TERMINATING assistant events: a `message_update` carries the
+      // running usage of a message still being written (counting it would double-
+      // count that message), and a toolResult message is not one of our turns.
+      o.type === 'message_end' && o.message?.role === 'assistant'
+    ) {
+      u = nested;
+      countsTurn = true;
+    }
+    if (!u) continue;
     acc.input += Number(u.input ?? u.input_tokens) || 0;
     acc.output += Number(u.output ?? u.output_tokens) || 0;
     acc.cacheRead += Number(u.cacheRead ?? u.cache_read_input_tokens) || 0;
-    acc.turns += Number(u.turns) || 0;
+    // pi emits no turns field, so one assistant message_end == one turn.
+    acc.turns += Number(u.turns) || (countsTurn ? 1 : 0);
   }
   return acc;
 }
