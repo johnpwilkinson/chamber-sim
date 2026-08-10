@@ -16,6 +16,10 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}'],
+    // `test/**/*.test.mjs` is additive, for chamber fixture specs that place plain
+    // Node utilities under src/util/ with their tests in a top-level test/ dir.
+    // Without it those files are silently uncollected and `--passWithNoTests`
+    // turns the mech gate green having run nothing.
+    include: ['src/**/*.test.{ts,tsx}', 'test/**/*.test.mjs'],
   },
 })

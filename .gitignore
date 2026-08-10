@@ -23,3 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 .kiro/.turbo/
+
+# Chamber helper runtime artifacts (spawn-helper.mjs). The KIT itself —
+# .chamber-helpers/spawn-helper.mjs and .chamber-helpers/config.json — is
+# committed fixture and must stay tracked, so only the runtime subpaths are
+# ignored here, never the directory as a whole.
+.pi-subagents/
+.chamber-helpers/live/
+.chamber-helpers/out/
+.chamber-helpers/results/
+.chamber-helpers/tasks/
+.chamber-helpers/lineage.log
