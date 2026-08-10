@@ -215,10 +215,16 @@ async function cmdRun(root, [taskFile, name, model]) {
                   '--model', model, prompt];
     code = await new Promise((resolveP) => {
       // stdin MUST be closed: pi hangs forever on unclosed non-tty stdin (proven
-      // trap, chamber/runner.mjs:518). An inherited pipe wedged all six c1 helpers
-      // pre-request — 50+ min alive, zero HTTP. stdout stays piped (usage metering
-      // reads it); stderr is discarded here as it always was.
+      // trap, chamber/runner.mjs:518). Node's default stdio gave the child a fresh
+      // pipe that nothing ever ended, wedging all six c1 helpers pre-request —
+      // 50+ min alive, zero HTTP. stdout stays piped (usage metering reads it);
+      // stderr is discarded here as it always was.
       const p = spawn('pi', args, { cwd: root, stdio: ['ignore', 'pipe', 'ignore'] });
+      // Decode as utf8 BEFORE accumulating (chamber/runner.mjs:500 does the same):
+      // concatenating raw Buffers splits multi-byte sequences at chunk boundaries
+      // into U+FFFD, which corrupts that JSON line — usageFromPiJson then skips it
+      // and the helper's usage silently floors, under-counting the measured axis.
+      p.stdout.setEncoding('utf8');
       p.stdout.on('data', (c) => { stdout += c; });
       p.on('error', () => resolveP(-1));
       p.on('close', (c) => resolveP(c ?? -1));
